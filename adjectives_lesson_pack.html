@@ -1,0 +1,2604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="theme-color" content="#1B2A4A"/>
+<meta name="description" content="Kopiya Junior School · Grade 9 Interactive Lesson: Order of Adjectives"/>
+<title>Order of Adjectives – Kopiya Junior School · Grade 9</title>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiT3JkZXIgb2YgQWRqZWN0aXZlcyIsInNob3J0X25hbWUiOiJBZGplY3RpdmVzIiwic3RhcnRfdXJsIjoiLiIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiMxQjJBNEEiLCJ0aGVtZV9jb2xvciI6IiMwRThBOEEifQ=="/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/*    TOKENS & RESET
+*/
+:root {
+  --navy:     #1B2A4A;
+  --teal:     #0E8A8A;
+  --gold:     #F5A623;
+  --red:      #E74C3C;
+  --orange:   #E67E22;
+  --yellow:   #D4AC0D;
+  --purple:   #7B2D8B;
+  --blue:     #2980B9;
+  --green:    #16A085;
+  --brown:    #D35400;
+  --off:      #F4F7FA;
+  --white:    #FFFFFF;
+  --card:     #FFFFFF;
+  --text:     #1C2833;
+  --muted:    #5D6D7E;
+  --border:   #DDE3EA;
+  --success:  #1A7A4A;
+  --error:    #C0392B;
+  --font-h:   'Playfair Display', Georgia, serif;
+  --font-b:   'DM Sans', sans-serif;
+  --font-m:   'DM Mono', monospace;
+  --r:        12px;
+  --shadow:   0 4px 24px rgba(27,42,74,.10);
+  --shadow-lg:0 8px 40px rgba(27,42,74,.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-b);background:var(--off);color:var(--text);min-height:100vh;overflow-x:hidden}
+button{font-family:var(--font-b);cursor:pointer;border:none;outline:none}
+input,select,textarea{font-family:var(--font-b)}
+a{color:var(--teal);text-decoration:none}
+
+/*    APP SHELL
+*/
+#app{display:flex;flex-direction:column;min-height:100vh}
+
+/* TOP NAV */
+.top-nav{
+  background:var(--navy);
+  padding:0 1.5rem;
+  height:60px;
+  display:flex;align-items:center;gap:1rem;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 16px rgba(0,0,0,.25);
+}
+.top-nav .logo{
+  font-family:var(--font-h);font-size:1.1rem;color:var(--gold);
+  white-space:nowrap;flex-shrink:0;
+}
+.top-nav .logo span{color:var(--white)}
+.nav-pills{display:flex;gap:.35rem;overflow-x:auto;flex:1;padding:0 .5rem;scrollbar-width:none}
+.nav-pills::-webkit-scrollbar{display:none}
+.nav-pill{
+  flex-shrink:0;
+  padding:.35rem .85rem;
+  border-radius:20px;
+  font-size:.8rem;font-weight:600;
+  color:rgba(255,255,255,.6);
+  background:transparent;
+  transition:all .2s;
+  white-space:nowrap;
+}
+.nav-pill:hover{color:var(--white);background:rgba(255,255,255,.1)}
+.nav-pill.active{background:var(--teal);color:var(--white)}
+.progress-ring{flex-shrink:0;cursor:default}
+.progress-ring svg{display:block}
+
+/* CONTENT AREA */
+.content{flex:1;max-width:960px;margin:0 auto;width:100%;padding:2rem 1.25rem 5.5rem}
+
+/*    SECTION SYSTEM
+*/
+.section{display:none;animation:fadeUp .4s ease both}
+.section.active{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/*    CARDS
+*/
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:1.5rem}
+.card-accent{border-left:5px solid var(--teal)}
+.card + .card{margin-top:1rem}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:1rem}
+
+/*    TYPOGRAPHY
+*/
+.page-title{font-family:var(--font-h);font-size:2rem;color:var(--navy);margin-bottom:.25rem}
+.page-sub{color:var(--muted);font-size:.95rem;margin-bottom:1.75rem}
+h3{font-family:var(--font-h);font-size:1.25rem;color:var(--navy);margin-bottom:.75rem}
+h4{font-size:.95rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem}
+p{line-height:1.7;color:var(--text)}
+.badge{
+  display:inline-block;padding:.2rem .65rem;border-radius:20px;
+  font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+}
+.chip{
+  display:inline-block;padding:.3rem .8rem;border-radius:20px;
+  font-size:.85rem;font-weight:600;
+  background:var(--off);color:var(--text);border:2px solid var(--border);
+  transition:all .2s;
+}
+
+/*    BUTTONS
+*/
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.65rem 1.4rem;border-radius:8px;
+  font-size:.9rem;font-weight:600;
+  transition:all .2s;
+}
+.btn-primary{background:var(--teal);color:#fff}
+.btn-primary:hover{background:#0b7070;transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--teal);border:2px solid var(--teal)}
+.btn-outline:hover{background:var(--teal);color:#fff}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:#243860}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:#e0921a}
+.btn-sm{padding:.4rem .9rem;font-size:.8rem}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important}
+
+/*    HERO (HOME)
+*/
+.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#243860 60%,#0E4060 100%);
+  border-radius:16px;padding:2.5rem;color:#fff;
+  position:relative;overflow:hidden;margin-bottom:1.5rem;
+}
+.hero::before{
+  content:'';position:absolute;right:-60px;top:-60px;
+  width:280px;height:280px;border-radius:50%;
+  background:radial-gradient(circle,rgba(14,138,138,.3),transparent 70%);
+}
+.hero h1{font-family:var(--font-h);font-size:2.4rem;line-height:1.1;margin-bottom:.5rem}
+.hero h1 em{color:var(--gold);font-style:normal}
+.hero p{color:rgba(255,255,255,.75);font-size:1rem;max-width:520px;line-height:1.6}
+.hero-chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem}
+.hero-chips .chip{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.25);font-size:.78rem}
+
+.outcome-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-bottom:1.5rem}
+.outcome-card{
+  background:var(--card);border-radius:var(--r);padding:1.25rem;
+  border-left:4px solid var(--teal);box-shadow:var(--shadow);
+  display:flex;gap:1rem;align-items:flex-start;
+}
+.outcome-icon{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;flex-shrink:0;
+}
+
+/*    REFERENCE TABLE
+*/
+.ref-table{width:100%;border-collapse:collapse;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.ref-table th{background:var(--navy);color:#fff;padding:.75rem 1rem;text-align:left;font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.ref-table td{padding:.75rem 1rem;border-bottom:1px solid var(--border);font-size:.9rem;vertical-align:top}
+.ref-table tr:last-child td{border-bottom:none}
+.ref-table tr:nth-child(even) td{background:#f8fafc}
+.type-dot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:.4rem;vertical-align:middle}
+
+/*    ACTIVITY WRAPPERS
+*/
+.activity-header{
+  background:linear-gradient(135deg,var(--navy),#243860);
+  border-radius:12px 12px 0 0;padding:1.25rem 1.5rem;color:#fff;
+  display:flex;align-items:center;gap:1rem;
+}
+.activity-header .act-num{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--teal);display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-h);font-size:1.2rem;font-weight:700;color:#fff;flex-shrink:0;
+}
+.activity-header h3{font-family:var(--font-h);color:#fff;margin:0;font-size:1.2rem}
+.activity-header p{color:rgba(255,255,255,.7);font-size:.85rem;margin:0}
+.activity-body{background:var(--card);border-radius:0 0 12px 12px;padding:1.5rem;box-shadow:var(--shadow)}
+
+/* FEEDBACK */
+.feedback{
+  padding:.85rem 1.2rem;border-radius:8px;font-weight:600;font-size:.95rem;
+  margin-top:1rem;display:none;
+}
+.feedback.show{display:block}
+.feedback.correct{background:#d4edda;color:#155724;border:1px solid #c3e6cb}
+.feedback.wrong{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+.feedback.info{background:#d1ecf1;color:#0c5460;border:1px solid #bee5eb}
+
+/* SCORE BADGE */
+.score-display{
+  text-align:center;padding:1.5rem;
+  background:linear-gradient(135deg,var(--teal),var(--green));
+  border-radius:12px;color:#fff;margin-top:1rem;
+}
+.score-display .big-num{font-family:var(--font-h);font-size:3rem;font-weight:900}
+
+/*    ACTIVITY 1 – MIND MAP
+*/
+.mindmap-container{position:relative;width:100%;height:480px;background:radial-gradient(ellipse at center,#eef4fb,var(--off));border-radius:12px;overflow:hidden;border:2px solid var(--border)}
+.mm-center{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:100px;height:100px;border-radius:50%;
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-h);font-size:.85rem;font-weight:700;text-align:center;
+  z-index:5;box-shadow:0 4px 20px rgba(27,42,74,.3);
+  line-height:1.2;
+}
+.mm-node{
+  position:absolute;border-radius:8px;
+  padding:.5rem .85rem;font-size:.78rem;font-weight:600;color:#fff;
+  cursor:pointer;z-index:4;text-align:center;
+  box-shadow:0 3px 12px rgba(0,0,0,.2);
+  transition:transform .2s,box-shadow .2s;
+  min-width:80px;
+}
+.mm-node:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.mm-branch{position:absolute;top:50%;left:50%;transform-origin:0 0;pointer-events:none;z-index:2}
+.mm-input-area{margin-top:1rem}
+.mm-input-row{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem}
+.mm-input-row select,.mm-input-row input{
+  padding:.5rem .85rem;border-radius:8px;border:2px solid var(--border);
+  font-size:.9rem;background:#fff;
+}
+.mm-input-row input{flex:1}
+.mm-word-list{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.75rem;min-height:36px}
+.mm-word-chip{
+  padding:.3rem .75rem;border-radius:20px;font-size:.8rem;font-weight:600;
+  cursor:pointer;color:#fff;transition:opacity .2s;
+}
+.mm-word-chip:hover{opacity:.8}
+
+/*    ACTIVITY 2 – AUDIO LISTEN
+*/
+.audio-player{
+  background:var(--navy);border-radius:12px;padding:1.25rem 1.5rem;
+  display:flex;flex-direction:column;gap:.75rem;color:#fff;margin-bottom:1rem;
+}
+.audio-waveform{
+  height:56px;display:flex;align-items:center;gap:3px;overflow:hidden;
+  cursor:pointer;padding:.5rem;border-radius:8px;
+  background:rgba(255,255,255,.06);
+}
+.audio-bar{
+  flex:1;max-width:6px;border-radius:3px;
+  background:rgba(255,255,255,.25);transition:background .3s;
+}
+.audio-bar.played{background:var(--teal)}
+.audio-bar.current{background:var(--gold)}
+.audio-controls{display:flex;align-items:center;gap:.85rem}
+.audio-play-btn{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--teal);color:#fff;
+  font-size:1.1rem;display:flex;align-items:center;justify-content:center;
+  transition:background .2s;
+}
+.audio-play-btn:hover{background:#0b7070}
+.audio-time{font-family:var(--font-m);font-size:.85rem;color:rgba(255,255,255,.7)}
+.audio-script{
+  background:#f8fafc;border:2px solid var(--border);border-radius:8px;
+  padding:1rem 1.25rem;font-size:.95rem;line-height:1.85;
+  max-height:160px;overflow-y:auto;
+}
+.audio-script .highlight{
+  background:var(--yellow);padding:.1rem .2rem;border-radius:3px;
+  font-weight:700;cursor:pointer;transition:background .2s;
+}
+.adj-found-grid{display:flex;flex-wrap:wrap;gap:.4rem;margin:.75rem 0}
+.adj-slot{
+  padding:.3rem .8rem;border-radius:20px;font-size:.82rem;font-weight:600;
+  border:2px dashed var(--border);color:var(--muted);
+  min-width:80px;text-align:center;
+}
+.adj-slot.filled{border-style:solid;color:#fff}
+
+/*    ACTIVITY 3 – DRAG & DROP ORDER
+*/
+.dnd-sentence{margin-bottom:1.5rem}
+.dnd-sentence p.sentence-prompt{font-size:.9rem;color:var(--muted);margin-bottom:.5rem}
+.dnd-pool{
+  display:flex;flex-wrap:wrap;gap:.5rem;min-height:48px;
+  padding:.75rem;border-radius:8px;
+  border:2px dashed var(--teal);background:rgba(14,138,138,.04);
+  margin-bottom:.5rem;
+}
+.dnd-target{
+  display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;
+  min-height:56px;padding:.75rem;border-radius:8px;
+  border:2px solid var(--border);background:#f8fafc;
+  margin-bottom:.5rem;
+}
+.dnd-target .noun-anchor{
+  padding:.4rem .9rem;background:var(--navy);color:#fff;
+  border-radius:20px;font-size:.85rem;font-weight:700;
+}
+.dnd-tile{
+  padding:.4rem .9rem;border-radius:12px;font-size:.85rem;font-weight:600;
+  cursor:grab;user-select:none;color:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+  transition:transform .15s,box-shadow .15s;
+  touch-action:none;text-align:center;line-height:1.2;
+}
+.dnd-tile:active{cursor:grabbing;transform:scale(1.08);box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.dnd-tile.dragging{opacity:.5}
+.dnd-tile.correct-pos{box-shadow:0 0 0 3px var(--success)}
+.dnd-tile.wrong-pos{box-shadow:0 0 0 3px var(--error)}
+
+/*    ACTIVITY 4 – PAIR / PICTURE SENTENCES
+*/
+.picture-card{
+  border-radius:12px;overflow:hidden;border:2px solid var(--border);
+  box-shadow:var(--shadow);margin-bottom:1rem;
+}
+.picture-display{
+  height:180px;display:flex;align-items:center;justify-content:center;
+  font-size:6rem;background:linear-gradient(135deg,#e8f4f8,#d6eaf8);
+}
+.picture-info{padding:1rem 1.25rem;background:#fff}
+.picture-info h4{color:var(--navy);margin-bottom:.3rem}
+.sentence-builder{margin-top:.75rem}
+.adj-type-picker{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.75rem}
+.type-pick-btn{
+  padding:.3rem .75rem;border-radius:20px;font-size:.8rem;font-weight:600;
+  color:#fff;border:none;cursor:pointer;transition:opacity .2s;
+}
+.type-pick-btn:hover{opacity:.75}
+.sentence-output{
+  min-height:48px;border:2px solid var(--border);border-radius:8px;
+  padding:.6rem 1rem;font-size:.95rem;background:#f8fafc;
+  display:flex;flex-wrap:wrap;gap:.35rem;align-items:center;
+}
+.sentence-word{
+  padding:.2rem .6rem;border-radius:12px;
+  font-size:.9rem;font-weight:600;background:var(--navy);color:#fff;
+}
+.sentence-word.noun{background:var(--teal)}
+.adj-bank{display:flex;flex-wrap:wrap;gap:.4rem;max-height:120px;overflow-y:auto;padding:.5rem;background:#f0f4f8;border-radius:8px;margin-bottom:.5rem}
+.adj-bank-word{
+  padding:.25rem .65rem;border-radius:12px;font-size:.82rem;font-weight:600;
+  cursor:pointer;color:#fff;transition:transform .15s;
+}
+.adj-bank-word:hover{transform:scale(1.06)}
+
+/*    ACTIVITY 5 – CROSSWORD
+*/
+.crossword-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+@media(max-width:600px){.crossword-wrap{grid-template-columns:1fr}}
+.cw-grid-wrap{overflow-x:auto}
+.cw-grid{display:inline-grid;gap:3px;background:var(--navy);padding:6px;border-radius:8px}
+.cw-cell{
+  width:38px;height:38px;display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.cw-cell.black{background:var(--navy)}
+.cw-cell input{
+  width:100%;height:100%;border:none;
+  text-align:center;font-family:var(--font-m);font-size:1rem;font-weight:700;
+  text-transform:uppercase;background:#fff;
+  color:var(--navy);outline:none;
+  border-radius:3px;
+}
+.cw-cell input:focus{background:#e8f4f8;outline:2px solid var(--teal)}
+.cw-cell input.correct{background:#d4edda;color:var(--success)}
+.cw-cell input.wrong{background:#f8d7da;color:var(--error)}
+.cw-num{
+  position:absolute;top:1px;left:2px;
+  font-size:.52rem;font-weight:700;color:var(--muted);
+  pointer-events:none;z-index:2;font-family:var(--font-m);
+}
+.cw-clues h4{margin-bottom:.5rem;color:var(--navy)}
+.cw-clue{
+  padding:.5rem .75rem;margin-bottom:.35rem;border-radius:6px;
+  font-size:.88rem;cursor:pointer;transition:background .15s;
+  border-left:3px solid var(--border);
+}
+.cw-clue:hover{background:#f0f4f8}
+.cw-clue.active{background:#e8f4f8;border-left-color:var(--teal)}
+.cw-clue .clue-num{font-weight:700;color:var(--teal);margin-right:.35rem}
+.cw-clue .clue-dir{font-size:.75rem;color:var(--muted);margin-right:.25rem}
+
+/*    ACTIVITY 6 – CHAIN STORY
+*/
+.story-display{
+  background:var(--navy);border-radius:12px;padding:1.5rem;
+  min-height:120px;color:#fff;line-height:1.9;font-size:1rem;
+  margin-bottom:1rem;
+}
+.story-display .adj-highlight{color:var(--gold);font-weight:700}
+.story-input-row{display:flex;gap:.5rem;margin-bottom:.75rem}
+.story-input{
+  flex:1;padding:.65rem 1rem;border-radius:8px;
+  border:2px solid var(--border);font-size:.95rem;background:#fff;
+}
+.story-input:focus{border-color:var(--teal);outline:none}
+.order-checker{
+  background:#f0f4f8;border-radius:8px;padding:1rem;margin-top:.75rem;
+}
+.order-result-row{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-top:.5rem}
+
+/*    ACTIVITY 7 – QUIZ
+*/
+.quiz-q{
+  background:var(--card);border-radius:12px;padding:1.5rem;
+  box-shadow:var(--shadow);margin-bottom:1rem;
+  border-top:4px solid var(--teal);
+}
+.quiz-q .q-text{font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:1rem}
+.quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+@media(max-width:480px){.quiz-options{grid-template-columns:1fr}}
+.quiz-opt{
+  padding:.75rem 1rem;border-radius:8px;
+  border:2px solid var(--border);background:#f8fafc;
+  text-align:left;font-size:.9rem;font-weight:500;
+  transition:all .2s;cursor:pointer;
+}
+.quiz-opt:hover{border-color:var(--teal);background:#e8f4f8}
+.quiz-opt.selected{border-color:var(--teal);background:#e8f4f8}
+.quiz-opt.correct{border-color:var(--success);background:#d4edda;color:#155724}
+.quiz-opt.wrong{border-color:var(--error);background:#f8d7da;color:#721c24}
+.quiz-progress{display:flex;gap:.3rem;margin-bottom:1rem;flex-wrap:wrap}
+.q-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--muted)}
+.q-dot.active{border-color:var(--teal);color:var(--teal)}
+.q-dot.done-correct{background:var(--success);border-color:var(--success);color:#fff}
+.q-dot.done-wrong{background:var(--error);border-color:var(--error);color:#fff}
+
+/*    MISC UTILS
+*/
+.divider{height:1px;background:var(--border);margin:1.5rem 0}
+.tip-box{
+  background:linear-gradient(135deg,#fffbec,#fff8e1);
+  border:1px solid #f5d88e;border-radius:8px;
+  padding:.85rem 1.1rem;font-size:.88rem;color:#7a5800;
+  margin-top:1rem;
+}
+.tip-box strong{color:#5a3e00}
+.error-box{background:#fdf0f0;border:1px solid #f5c6cb;border-radius:8px;padding:.8rem 1rem;font-size:.88rem;color:#721c24}
+
+.mt1{margin-top:.5rem}.mt2{margin-top:1rem}.mt3{margin-top:1.5rem}
+.flex{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center}
+.text-center{text-align:center}
+
+
+/* Scramble activity */
+.scr-word{transition:transform .12s,opacity .2s}
+.scr-word:hover{transform:scale(1.07)!important}
+.scr-word:active{transform:scale(.95)!important}
+
+/* Better audio waveform animation */
+@keyframes wave{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.8)}}
+.audio-bar.playing{animation:wave 0.5s ease-in-out infinite;background:var(--teal)!important}
+
+/* Crossword responsive */
+
+@media print{
+  .top-nav,.progress-ring,.btn,#quickRef,div[style*="position:fixed"]{display:none!important}
+  .section{display:block!important}
+  .card{box-shadow:none;border:1px solid #ccc}
+}
+
+@media(max-width:700px){
+  .crossword-wrap{grid-template-columns:1fr}
+  .cw-cell{width:30px;height:30px}
+  .cw-cell input{font-size:.85rem}
+  .cw-num{font-size:.45rem}
+}
+
+/* DnD mobile */
+@media(max-width:560px){
+  .dnd-tile{font-size:.78rem;padding:.35rem .7rem}
+}
+
+/* Story words */
+.story-contrib{border-left:3px solid var(--teal);padding-left:.6rem;margin:.35rem 0;line-height:1.8}
+
+/* Quiz improvement */
+.quiz-opt.disabled{pointer-events:none}
+
+/* Reference mnemonic */
+.mnemonic-banner{
+  background:linear-gradient(135deg,var(--navy),#243860);
+  border-radius:12px;padding:1.25rem 1.5rem;color:#fff;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  margin-bottom:1.5rem;
+}
+.mnemonic-letter{
+  width:36px;height:36px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:1.1rem;color:#fff;flex-shrink:0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:#f1f1f1;border-radius:10px}
+::-webkit-scrollbar-thumb{background:#c0cad5;border-radius:10px}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="logo" style="display:flex;flex-direction:column;line-height:1">
+    <span style="font-size:.62rem;font-weight:600;color:rgba(245,166,35,.75);letter-spacing:.08em;text-transform:uppercase">KOPIYA JUNIOR SCHOOL</span>
+    <span style="font-size:.95rem;color:#fff;font-family:var(--font-h)">✦ <span style="color:var(--gold)">Adjectives</span></span>
+  </div>
+  <div class="nav-pills" id="navPills">
+    <button class="nav-pill active" onclick="showSection('home',this)">🏠 Home</button>
+    <button class="nav-pill" onclick="showSection('reference',this)">📖 Reference</button>
+    <button class="nav-pill" onclick="showSection('act1',this)">🗺 Mind Map</button>
+    <button class="nav-pill" onclick="showSection('act2',this)">🎧 Listen</button>
+    <button class="nav-pill" onclick="showSection('act3',this)">↔ Drag &amp; Order</button>
+    <button class="nav-pill" onclick="showSection('act4',this)">🖼 Sentences</button>
+    <button class="nav-pill" onclick="showSection('act5',this)">🔤 Crossword</button>
+    <button class="nav-pill" onclick="showSection('act6',this)">📖 Chain Story</button>
+    <button class="nav-pill" onclick="showSection('act7',this)">📝 Quiz</button>
+    <button class="nav-pill" onclick="showSection('act8',this)">🔀 Scramble</button>
+  </div>
+  <svg class="progress-ring" width="44" height="44" title="Progress">
+    <circle cx="22" cy="22" r="17" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="4"/>
+    <circle id="progressArc" cx="22" cy="22" r="17" fill="none" stroke="#F5A623" stroke-width="4"
+      stroke-dasharray="107" stroke-dashoffset="107" stroke-linecap="round" transform="rotate(-90 22 22)" style="transition:stroke-dashoffset .6s"/>
+    <text x="22" y="26" text-anchor="middle" font-size="9" font-weight="700" fill="#F5A623" font-family="DM Mono,monospace" id="progressText">0%</text>
+  </svg>
+</nav>
+
+<div class="content">
+
+<!-- --- HOME --- -->
+<div id="home" class="section active">
+  <div class="hero">
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.85rem">
+    <div class="badge" style="background:var(--teal);color:#fff">Grade 9 · English · Language Structures</div>
+    <div class="badge" style="background:var(--gold);color:var(--navy)">🏫 Kopiya Junior School</div>
+  </div>
+    <div style="display:flex;align-items:center;gap:1rem;margin-bottom:.5rem">
+    <div style="width:52px;height:52px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;box-shadow:0 3px 12px rgba(0,0,0,.25)">🏫</div>
+    <div style="font-size:.75rem;color:rgba(245,166,35,.85);font-weight:700;letter-spacing:.1em;line-height:1.4">KOPIYA JUNIOR SCHOOL<br/><span style="color:rgba(255,255,255,.6);font-weight:400;font-size:.7rem;letter-spacing:.04em">GRADE 9 · ENGLISH · LANGUAGE STRUCTURES</span></div>
+  </div>
+  <h1>Order of<br/><em>Adjectives</em></h1>
+    <p>Welcome, Kopiya Junior School learners! Select your pair number below, then work through your unique set of activities together.</p>
+    <div class="hero-chips">
+      <span class="chip">Opinion</span><span class="chip">Size</span><span class="chip">Age</span>
+      <span class="chip">Shape</span><span class="chip">Colour</span><span class="chip">Origin</span>
+      <span class="chip">Material</span><span class="chip">Purpose</span>
+    </div>
+  </div>
+
+
+  <!-- PAIR SELECTOR -->
+  <div id="pairSelectorCard" class="card" style="border:2px solid var(--gold);background:linear-gradient(135deg,#fffbec,#fff8e1);margin-bottom:1.5rem">
+    <div style="display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.85rem">
+      <div style="font-size:1.8rem">👥</div>
+      <div>
+        <h3 style="color:var(--navy);margin:0">Select Your Pair</h3>
+        <p style="font-size:.85rem;color:var(--muted);margin:0">20 learners · 10 pairs — each pair gets unique activities</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.5rem;margin-bottom:.85rem" id="pairGrid">
+      
+        <button onclick="selectPair(1)" id="pairBtn1"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=1)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=1)this.style.borderColor='var(--border)'">
+          Pair 1
+        </button>
+        <button onclick="selectPair(2)" id="pairBtn2"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=2)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=2)this.style.borderColor='var(--border)'">
+          Pair 2
+        </button>
+        <button onclick="selectPair(3)" id="pairBtn3"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=3)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=3)this.style.borderColor='var(--border)'">
+          Pair 3
+        </button>
+        <button onclick="selectPair(4)" id="pairBtn4"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=4)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=4)this.style.borderColor='var(--border)'">
+          Pair 4
+        </button>
+        <button onclick="selectPair(5)" id="pairBtn5"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=5)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=5)this.style.borderColor='var(--border)'">
+          Pair 5
+        </button>
+        <button onclick="selectPair(6)" id="pairBtn6"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=6)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=6)this.style.borderColor='var(--border)'">
+          Pair 6
+        </button>
+        <button onclick="selectPair(7)" id="pairBtn7"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=7)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=7)this.style.borderColor='var(--border)'">
+          Pair 7
+        </button>
+        <button onclick="selectPair(8)" id="pairBtn8"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=8)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=8)this.style.borderColor='var(--border)'">
+          Pair 8
+        </button>
+        <button onclick="selectPair(9)" id="pairBtn9"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=9)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=9)this.style.borderColor='var(--border)'">
+          Pair 9
+        </button>
+        <button onclick="selectPair(10)" id="pairBtn10"
+          style="padding:.55rem;border-radius:10px;border:2px solid var(--border);background:#fff;
+          font-weight:700;font-size:.95rem;cursor:pointer;transition:all .2s;color:var(--navy)"
+          onmouseover="if(currentPair!=10)this.style.borderColor='var(--teal)'"
+          onmouseout="if(currentPair!=10)this.style.borderColor='var(--border)'">
+          Pair 10
+        </button>
+    </div>
+    <div id="pairConfirm" style="display:none;padding:.75rem 1rem;background:var(--navy);border-radius:8px;color:#fff;font-size:.9rem">
+      ✦ <strong id="pairLabel" style="color:var(--gold)"></strong> — your personalised activities are ready! 🎉
+    </div>
+  </div>
+
+  <div class="outcome-grid">
+    <div class="outcome-card" style="border-color:var(--teal)">
+      <div class="outcome-icon" style="background:#e0f5f5;font-size:1.3rem">🔍</div>
+      <div>
+        <h4 style="color:var(--teal)">Identify</h4>
+        <p style="font-size:.88rem">Recognise various types of adjectives in texts.</p>
+      </div>
+    </div>
+    <div class="outcome-card" style="border-color:var(--navy)">
+      <div class="outcome-icon" style="background:#e8ecf2;font-size:1.3rem">✍️</div>
+      <div>
+        <h4 style="color:var(--navy)">Apply</h4>
+        <p style="font-size:.88rem">Use the correct order in oral and written texts.</p>
+      </div>
+    </div>
+    <div class="outcome-card" style="border-color:var(--gold)">
+      <div class="outcome-icon" style="background:#fff8e1;font-size:1.3rem">💡</div>
+      <div>
+        <h4 style="color:#b87a00">Appreciate</h4>
+        <p style="font-size:.88rem">Value how ordered adjectives aid clarity.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Your Activity Map</h3>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Track your progress through all 8 activities. Gold = completed.</p>
+    <div id="homeActivityMap" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-top:.75rem"></div>
+  </div>
+
+  <div class="card mt2" style="background:linear-gradient(135deg,#fffbec,#fff8e1);border:1px solid #f5d88e">
+    <h3 style="color:#5a3e00;margin-bottom:.75rem">📌 How to use this pack</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.75rem">
+      
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <span style="font-size:1.4rem">📖</span>
+          <div><div style="font-weight:700;font-size:.9rem;color:#5a3e00">Start with Reference</div><div style="font-size:.82rem;color:#7a6000">Read the Royal Order chart and mnemonic before doing activities.</div></div>
+        </div>
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <span style="font-size:1.4rem">🔀</span>
+          <div><div style="font-weight:700;font-size:.9rem;color:#5a3e00">Work in any order</div><div style="font-size:.82rem;color:#7a6000">Jump between activities. Progress is saved per session.</div></div>
+        </div>
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <span style="font-size:1.4rem">🎧</span>
+          <div><div style="font-weight:700;font-size:.9rem;color:#5a3e00">Use TTS</div><div style="font-size:.82rem;color:#7a6000">In the Listen activity, click "Read Aloud" to hear the passage.</div></div>
+        </div>
+        <div style="display:flex;gap:.75rem;align-items:flex-start">
+          <span style="font-size:1.4rem">📱</span>
+          <div><div style="font-weight:700;font-size:.9rem;color:#5a3e00">Works offline</div><div style="font-size:.82rem;color:#7a6000">This PWA can be installed on your phone or tablet.</div></div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- --- REFERENCE --- -->
+<div id="reference" class="section">
+  <div class="page-title">Reference Guide</div>
+  <div class="page-sub">Everything you need to know about the Royal Order of Adjectives.</div>
+
+  <div class="mnemonic-banner">
+    <div>
+      <div style="font-size:.75rem;color:var(--gold);font-weight:700;letter-spacing:.08em;margin-bottom:.4rem">MEMORY AID</div>
+      <div style="font-size:.95rem;font-weight:600;margin-bottom:.5rem">"<span style="color:var(--gold)">O</span>scar <span style="color:var(--gold)">S</span>aw <span style="color:var(--gold)">A</span> <span style="color:var(--gold)">S</span>illy <span style="color:var(--gold)">C</span>at <span style="color:var(--gold)">O</span>ften <span style="color:var(--gold)">M</span>aking <span style="color:var(--gold)">P</span>asta"</div>
+      <div style="display:flex;flex-wrap:wrap;gap:.4rem">
+        <span class="mnemonic-letter" style="background:#E74C3C">O</span><span class="mnemonic-letter" style="background:#E67E22">S</span><span class="mnemonic-letter" style="background:#D4AC0D">A</span><span class="mnemonic-letter" style="background:#7B2D8B">S</span><span class="mnemonic-letter" style="background:#2980B9">C</span><span class="mnemonic-letter" style="background:#16A085">O</span><span class="mnemonic-letter" style="background:#0E8A8A">M</span><span class="mnemonic-letter" style="background:#D35400">P</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:1rem">
+    <h3>The Royal Order</h3>
+    <p style="margin-bottom:1rem">When two or more adjectives appear before a noun, English requires them to follow this fixed sequence:</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem">
+      <span class="badge" style="background:#E74C3C;color:#fff">1. Opinion</span>
+      <span style="color:var(--muted);align-self:center">→</span>
+      <span class="badge" style="background:#E67E22;color:#fff">2. Size</span>
+      <span style="color:var(--muted);align-self:center">→</span>
+      <span class="badge" style="background:#D4AC0D;color:#fff">3. Age</span>
+      <span style="color:var(--muted);align-self:center">→</span>
+      <span class="badge" style="background:#7B2D8B;color:#fff">4. Shape</span>
+      <span style="color:var(--muted);align-self:center">→</span>
+      <span class="badge" style="background:#2980B9;color:#fff">5. Colour</span>
+      <span style="color:var(--muted);align-self:center">→</span>
+      <span class="badge" style="background:#16A085;color:#fff">6. Origin</span>
+      <span style="color:var(--muted);align-self:center">→</span>
+      <span class="badge" style="background:#0E8A8A;color:#fff">7. Material</span>
+      <span style="color:var(--muted);align-self:center">→</span>
+      <span class="badge" style="background:#D35400;color:#fff">8. Purpose</span>
+    </div>
+    <div class="tip-box"><strong>Mnemonic:</strong> "Oscar Saw A Silly Cat Often Making Pasta" → Opinion · Size · Age · Shape · Colour · Origin · Material · Purpose</div>
+    <div class="tip-box mt2"><strong>Full example:</strong> "a <span style="color:#E74C3C;font-weight:700">beautiful</span> <span style="color:#E67E22;font-weight:700">little</span> <span style="color:#D4AC0D;font-weight:700">old</span> <span style="color:#7B2D8B;font-weight:700">round</span> <span style="color:#2980B9;font-weight:700">green</span> <span style="color:#16A085;font-weight:700">French</span> <span style="color:#0E8A8A;font-weight:700">silver</span> jewellery box"</div>
+  </div>
+
+  <table class="ref-table">
+    <thead><tr><th>#</th><th>Type</th><th>Question</th><th>Examples</th></tr></thead>
+    <tbody id="refTableBody"></tbody>
+  </table>
+</div>
+
+<!-- --- ACT 1 – MIND MAP --- -->
+<div id="act1" class="section">
+  <div class="activity-header">
+    <div class="act-num">1</div>
+    <div><h3>Mind Map Generator</h3><p>Add adjectives to each branch and build your own map</p></div>
+  </div>
+  <div class="activity-body">
+    <div class="mindmap-container" id="mmCanvas">
+      <canvas id="mmLines" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none"></canvas>
+      <div class="mm-center" id="mmCenter">ADJEC-<br/>TIVES</div>
+    </div>
+    <div class="mm-input-area">
+      <div class="mm-input-row">
+        <select id="mmTypeSelect" onchange="mmUpdateColor()">
+          <option value="opinion">Opinion</option>
+          <option value="size">Size</option>
+          <option value="age">Age</option>
+          <option value="shape">Shape</option>
+          <option value="colour">Colour</option>
+          <option value="origin">Origin</option>
+          <option value="material">Material</option>
+          <option value="purpose">Purpose</option>
+        </select>
+        <input type="text" id="mmWordInput" placeholder="Type an adjective…" maxlength="20" onkeydown="if(event.key==='Enter')mmAddWord()"/>
+        <button class="btn btn-primary btn-sm" onclick="mmAddWord()">+ Add</button>
+        <button class="btn btn-outline btn-sm" onclick="mmClear()">Clear</button>
+      </div>
+      <div id="mmWordList" class="mm-word-list"></div>
+      <div class="tip-box mt2">💡 Aim for at least 4 adjectives per type. Click a chip to remove it. The connecting lines are drawn automatically.</div>
+    </div>
+  </div>
+</div>
+
+<!-- --- ACT 2 – AUDIO --- -->
+<div id="act2" class="section">
+  <div class="activity-header">
+    <div class="act-num">2</div>
+    <div><h3>Listen &amp; Identify</h3><p>Read the passage aloud (or use TTS) and spot the adjectives</p></div>
+  </div>
+  <div class="activity-body">
+
+    <div class="audio-player" id="audioPlayer">
+      <div style="display:flex;align-items:center;gap:1rem">
+        <div>
+          <div style="font-weight:700;font-size:.95rem" id="audioPassageTitle">📻 The Market</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.6)">A descriptive passage — 8 adjectives hidden inside</div>
+        </div>
+        <button class="btn btn-sm" style="background:var(--gold);color:var(--navy);margin-left:auto" onclick="readPassage()" id="ttsBtn">▶ Read Aloud</button>
+      </div>
+      <div class="audio-waveform" id="waveform"></div>
+      <div style="font-size:.78rem;color:rgba(255,255,255,.55);text-align:center">Click "Read Aloud" to hear the passage via text-to-speech, or read it below yourself</div>
+    </div>
+
+    <div class="audio-script" id="audioScript"></div>
+
+    <div class="divider"></div>
+    <h4>Found Adjectives — Click each highlighted word to classify it:</h4>
+    <div id="adjFoundGrid" class="adj-found-grid"></div>
+
+    <div id="classifyArea" style="display:none;margin-top:.75rem">
+      <p style="font-size:.9rem;margin-bottom:.5rem">Which type is <strong id="classifyWord" style="color:var(--teal)"></strong>?</p>
+      <div id="classifyBtns" style="display:flex;flex-wrap:wrap;gap:.4rem"></div>
+    </div>
+
+    <div class="feedback" id="audioFeedback"></div>
+    <div class="tip-box mt2" id="audioProgress">Click a highlighted word in the passage to classify it. <strong id="audioScore">0/8</strong> found.</div>
+  </div>
+</div>
+
+<!-- --- ACT 3 – DRAG & DROP --- -->
+<div id="act3" class="section">
+  <div class="activity-header">
+    <div class="act-num">3</div>
+    <div><h3>Drag &amp; Drop: Correct Order</h3><p>Rearrange the adjective tiles into the correct royal order before the noun</p></div>
+  </div>
+  <div class="activity-body">
+    <div id="dndContainer"></div>
+    <div class="flex mt2">
+      <button class="btn btn-primary" onclick="dndCheckAll()">✓ Check Order</button>
+      <button class="btn btn-outline" onclick="dndReset()">↺ Reset</button>
+      <button class="btn btn-navy" onclick="dndNext()">Next Puzzle →</button>
+    </div>
+    <div class="feedback" id="dndFeedback"></div>
+    <div class="tip-box mt2">💡 Drag the coloured tiles into the grey box before the noun. The noun (dark tile) stays fixed at the end.</div>
+  </div>
+</div>
+
+<!-- --- ACT 4 – PICTURE SENTENCES --- -->
+<div id="act4" class="section">
+  <div class="activity-header">
+    <div class="act-num">4</div>
+    <div><h3>Picture Sentence Builder</h3><p>Choose adjectives from the bank and construct sentences about the image</p></div>
+  </div>
+  <div class="activity-body">
+    <div id="pictureCards"></div>
+  </div>
+</div>
+
+<!-- --- ACT 5 – CROSSWORD --- -->
+<div id="act5" class="section">
+  <div class="activity-header">
+    <div class="act-num">5</div>
+    <div><h3>Adjective Crossword</h3><p>Solve the puzzle — all answers are adjectives of different types</p></div>
+  </div>
+  <div class="activity-body">
+    <div class="crossword-wrap">
+      <div>
+        <div class="cw-grid-wrap">
+          <div class="cw-grid" id="cwGrid"></div>
+        </div>
+        <div class="flex mt2">
+          <button class="btn btn-primary btn-sm" onclick="cwCheck()">✓ Check</button>
+          <button class="btn btn-outline btn-sm" onclick="cwReveal()">💡 Reveal All</button>
+          <button class="btn btn-outline btn-sm" onclick="cwReset()">↺ Reset</button>
+        </div>
+        <div class="feedback" id="cwFeedback"></div>
+      </div>
+      <div class="cw-clues">
+        <h4>Across</h4>
+        <div id="cwAcrossClues"></div>
+        <h4 style="margin-top:1rem">Down</h4>
+        <div id="cwDownClues"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --- ACT 6 – CHAIN STORY --- -->
+<div id="act6" class="section">
+  <div class="activity-header">
+    <div class="act-num">6</div>
+    <div><h3>Chain Story Game</h3><p>Add to the story using adjectives in the correct order</p></div>
+  </div>
+  <div class="activity-body">
+    <div class="story-display" id="storyDisplay">
+      <em style="color:rgba(255,255,255,.55)">Once upon a time there was a character who lived in a place…</em>
+    </div>
+
+    <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Add a noun phrase (e.g. "a gorgeous little old wooden house") to continue the story:</p>
+    <div class="story-input-row">
+      <input class="story-input" id="storyInput" placeholder='e.g. "a beautiful large ancient stone castle"' onkeydown="if(event.key==='Enter')storyAdd()"/>
+      <button class="btn btn-primary" onclick="storyAdd()">Add ➜</button>
+    </div>
+
+    <div class="order-checker" id="orderChecker" style="display:none">
+      <strong style="font-size:.88rem;color:var(--navy)">Order Analysis:</strong>
+      <div class="order-result-row" id="orderResultRow"></div>
+      <div id="orderVerdict" style="margin-top:.5rem;font-size:.88rem"></div>
+    </div>
+
+    <div class="feedback" id="storyFeedback"></div>
+
+    <div class="divider"></div>
+    <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+      <button class="btn btn-outline btn-sm" onclick="storyUndo()">↩ Undo</button>
+      <button class="btn btn-outline btn-sm" onclick="storyClear()">🗑 Clear Story</button>
+      <button class="btn btn-navy btn-sm" onclick="storyCopy()">📋 Copy Story</button>
+    </div>
+    <div class="tip-box mt2">💡 The checker will highlight each adjective and tell you if the order is correct. Wrong-order phrases are shown in red — fix and resubmit!</div>
+  </div>
+</div>
+
+<!-- --- ACT 7 – QUIZ --- -->
+<div id="act7" class="section">
+  <div class="activity-header">
+    <div class="act-num">7</div>
+    <div><h3>Formative Quiz</h3><p>10 questions — test your understanding of adjective types and order</p></div>
+  </div>
+  <div class="activity-body">
+    <div class="quiz-progress" id="quizProgress"></div>
+    <div id="quizContainer"></div>
+    <div class="flex mt2">
+      <button class="btn btn-primary" id="quizNextBtn" onclick="quizNext()" style="display:none">Next Question →</button>
+      <button class="btn btn-outline" onclick="quizRestart()" id="quizRestartBtn" style="display:none">↺ Restart Quiz</button>
+    </div>
+  </div>
+</div>
+
+<!-- --- ACT 8 – SENTENCE SCRAMBLE --- -->
+<div id="act8" class="section">
+  <div class="activity-header">
+    <div class="act-num">8</div>
+    <div><h3>Sentence Scramble</h3><p>Tap words in the correct order to rebuild the sentence</p></div>
+  </div>
+  <div class="activity-body">
+    <div id="scrambleContainer"></div>
+    <div class="flex mt2">
+      <button class="btn btn-primary" onclick="scrambleCheck()">✓ Check</button>
+      <button class="btn btn-outline" onclick="scrambleReset()">↺ Reset</button>
+      <button class="btn btn-navy" onclick="scrambleNext()">Next →</button>
+    </div>
+    <div class="feedback" id="scrambleFeedback"></div>
+    <div class="tip-box mt2">💡 Tap a word to move it to your answer. Tap it again in the answer area to send it back.</div>
+  </div>
+</div>
+</div><!-- /content -->
+</div><!-- /app -->
+
+<script>
+// ═══ HOISTED: declared first — used by init() and buildScramble() ═══
+
+const SCRAMBLE_SENTENCES = [
+  {words:['a','beautiful','little','old','oval','green','French','glass','vase'], noun:'vase', correct:['a','beautiful','little','old','oval','green','French','glass','vase']},
+  {words:['a','horrible','large','ancient','black','German','metal','cooking','pot'], noun:'pot', correct:['a','horrible','large','ancient','black','German','metal','cooking','pot']},
+  {words:['some','lovely','tiny','modern','round','scarlet','Italian','silk','sleeping','bags'], noun:'bags', correct:['some','lovely','tiny','modern','round','scarlet','Italian','silk','sleeping','bags']},
+  {words:['a','magnificent','enormous','ancient','rectangular','golden','Egyptian','stone','temple'], noun:'temple', correct:['a','magnificent','enormous','ancient','rectangular','golden','Egyptian','stone','temple']},
+  {words:['the','dreadful','little','medieval','square','grey','Scottish','granite','castle'], noun:'castle', correct:['the','dreadful','little','medieval','square','grey','Scottish','granite','castle']},
+];
+// Word type labels for colour-coding
+const WORD_TYPES = {
+  a:'article', the:'article', some:'article',
+  // opinion
+  beautiful:'opinion', horrible:'opinion', lovely:'opinion', magnificent:'opinion', dreadful:'opinion',
+  wonderful:'opinion', gorgeous:'opinion', charming:'opinion', superb:'opinion', terrible:'opinion',
+  brilliant:'opinion', ugly:'opinion', delightful:'opinion', awful:'opinion', impressive:'opinion',
+  frightening:'opinion', grand:'opinion', precious:'opinion',
+  // size
+  little:'size', large:'size', tiny:'size', enormous:'size', small:'size', huge:'size',
+  vast:'size', gigantic:'size', tall:'size', long:'size', wide:'size', short:'size',
+  // age
+  old:'age', ancient:'age', modern:'age', medieval:'age', new:'age', young:'age',
+  antique:'age', vintage:'age', elderly:'age',
+  // shape
+  oval:'shape', round:'shape', rectangular:'shape', square:'shape', circular:'shape',
+  flat:'shape', narrow:'shape', triangular:'shape',
+  // colour
+  green:'colour', black:'colour', scarlet:'colour', golden:'colour', grey:'colour',
+  red:'colour', blue:'colour', white:'colour', silver:'colour', dark:'colour',
+  pink:'colour', purple:'colour', brown:'colour', orange:'colour', gold:'colour',
+  // origin
+  French:'origin', German:'origin', Italian:'origin', Egyptian:'origin', Scottish:'origin',
+  Japanese:'origin', Chinese:'origin', Roman:'origin', Greek:'origin', Irish:'origin',
+  Indian:'origin', African:'origin', English:'origin', Turkish:'origin', Swedish:'origin',
+  Mexican:'origin', American:'origin', Brazilian:'origin', Spanish:'origin',
+  // material
+  glass:'material', metal:'material', silk:'material', stone:'material', granite:'material',
+  leather:'material', wooden:'material', porcelain:'material', ceramic:'material',
+  marble:'material', iron:'material', cotton:'material', plastic:'material', wool:'material',
+  wicker:'material', copper:'material', velvet:'material', woollen:'material', diamond:'material',
+  // purpose
+  cooking:'purpose', sleeping:'purpose', hunting:'purpose', racing:'purpose',
+  writing:'purpose', training:'purpose', fishing:'purpose', prayer:'purpose',
+  rocking:'purpose',
+  // nouns (common across all sentences)
+  vase:'noun', pot:'noun', bags:'noun', temple:'noun', castle:'noun',
+  scarf:'noun', cushion:'noun', pendant:'noun', mask:'noun', brooch:'noun',
+  notebook:'noun', plate:'noun', column:'noun', statue:'noun', coin:'noun',
+  chair:'noun', necklace:'noun', ring:'noun', crown:'noun', bowl:'noun',
+  lantern:'noun', shields:'noun', tray:'noun', bell:'noun', barn:'noun',
+  greenhouse:'noun', dungeon:'noun', cottage:'noun', curtains:'noun',
+};
+const WORD_COLORS = {article:'#8492A6', opinion:'#E74C3C', size:'#E67E22', age:'#D4AC0D', shape:'#7B2D8B', colour:'#2980B9', origin:'#16A085', material:'#0E8A8A', purpose:'#D35400', noun:'#1B2A4A'};
+
+let scrambleCurrent=0, scrambleAnswer=[], scramblePool=[];
+
+// Active data pointers (swapped when a pair is selected)
+let DND_PUZZLES_ACTIVE = [];
+let ACTIVE_PASSAGE = null;
+let SCRAMBLE_ACTIVE = [];
+let PICTURES_ACTIVE = [];
+let CW_ACTIVE = null;
+let STORY_STARTER_ACTIVE = 'Once upon a time, a learner began an adventure...';
+let QUIZ_SET_ACTIVE = [0,1,2,3,4,5,6,7,8,9];
+
+// ═══ END HOISTED ═══════════════════════════════════════════════════════════
+
+/*    DATA
+*/
+const TYPE_META = {
+  opinion:  {label:'Opinion',  color:'#E74C3C', num:1, q:'What do you think?',  examples:'beautiful, awful, lovely, gorgeous, dreadful, brilliant'},
+  size:     {label:'Size',     color:'#E67E22', num:2, q:'How big or small?',    examples:'huge, tiny, enormous, gigantic, compact, vast'},
+  age:      {label:'Age',      color:'#D4AC0D', num:3, q:'How old or new?',      examples:'ancient, modern, young, brand-new, medieval, vintage'},
+  shape:    {label:'Shape',    color:'#7B2D8B', num:4, q:'What shape?',          examples:'round, square, oval, triangular, curved, rectangular'},
+  colour:   {label:'Colour',   color:'#2980B9', num:5, q:'What colour?',         examples:'scarlet, navy, golden, ebony, crimson, turquoise'},
+  origin:   {label:'Origin',   color:'#16A085', num:6, q:'Where is it from?',    examples:'Italian, African, local, Eastern, Viking, French'},
+  material: {label:'Material', color:'#0E8A8A', num:7, q:'Made of what?',        examples:'wooden, silk, plastic, leather, ceramic, glass'},
+  purpose:  {label:'Purpose',  color:'#D35400', num:8, q:'Used for what?',       examples:'cooking, racing, sleeping, writing, hunting, training'},
+};
+const TYPE_ORDER = ['opinion','size','age','shape','colour','origin','material','purpose'];
+
+/*    NAVIGATION & PROGRESS
+*/
+const sectionProgress = {home:false,reference:false,act1:false,act2:false,act3:false,act4:false,act5:false,act6:false,act7:false,act8:false};
+const sectionMeta = [
+  {id:'home',     icon:'🏠', label:'Home',         color:'#1B2A4A'},
+  {id:'reference',icon:'📖', label:'Reference',    color:'#0E8A8A'},
+  {id:'act1',     icon:'🗺', label:'Mind Map',     color:'#16A085'},
+  {id:'act2',     icon:'🎧', label:'Listen',       color:'#2980B9'},
+  {id:'act3',     icon:'↔', label:'Drag & Order', color:'#E67E22'},
+  {id:'act4',     icon:'🖼', label:'Sentences',    color:'#7B2D8B'},
+  {id:'act5',     icon:'🔤', label:'Crossword',    color:'#D4AC0D'},
+  {id:'act6',     icon:'📖', label:'Chain Story',  color:'#E74C3C'},
+  {id:'act7',     icon:'📝', label:'Quiz',         color:'#D35400'},
+  {id:'act8',     icon:'🔀', label:'Scramble',     color:'#16A085'},
+];
+
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav-pill').forEach(p=>p.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  sectionProgress[id] = true;
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Nudge pair selection for activity sections
+  const actSections=['act1','act2','act3','act4','act5','act6','act7','act8'];
+  if(actSections.includes(id) && !currentPair){
+    showToast('👥 Select your pair number on the Home page first!');
+  }
+}
+
+function updateProgress() {
+  const done = Object.values(sectionProgress).filter(Boolean).length;
+  const total = Object.keys(sectionProgress).length;
+  const pct = Math.round(done/total*100);
+  const arc = document.getElementById('progressArc');
+  const txt = document.getElementById('progressText');
+  const circ = 2*Math.PI*17;
+  arc.style.strokeDashoffset = circ - (circ * pct/100);
+  txt.textContent = pct+'%';
+  renderHomeMap();
+}
+
+function renderHomeMap() {
+  const map = document.getElementById('homeActivityMap');
+  if(!map) return;
+  map.innerHTML = sectionMeta.filter(s=>s.id!=='home').map(s=>`
+    <div onclick="showSection('${s.id}',document.querySelectorAll('.nav-pill')[${sectionMeta.findIndex(x=>x.id===s.id)}])"
+      style="background:${sectionProgress[s.id]?s.color:'#fff'};color:${sectionProgress[s.id]?'#fff':s.color};
+      border:2px solid ${s.color};border-radius:10px;padding:.85rem 1rem;cursor:pointer;
+      display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.88rem;
+      transition:transform .15s,box-shadow .15s;box-shadow:${sectionProgress[s.id]?'0 4px 12px rgba(0,0,0,.18)':'none'}"
+      onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''"
+    >${s.icon} ${s.label} ${sectionProgress[s.id]?'✓':''}</div>
+  `).join('');
+}
+
+/*    REFERENCE TABLE
+*/
+function buildRefTable(){
+  const tbody=document.getElementById('refTableBody');
+  tbody.innerHTML=TYPE_ORDER.map(t=>{
+    const m=TYPE_META[t];
+    return `<tr>
+      <td><span class="type-dot" style="background:${m.color}"></span><strong>${m.num}</strong></td>
+      <td><strong style="color:${m.color}">${m.label}</strong></td>
+      <td style="color:var(--muted);font-size:.85rem">${m.q}</td>
+      <td style="font-size:.85rem">${m.examples}</td>
+    </tr>`;
+  }).join('');
+}
+
+
+/*    PAIR SYSTEM – 10 unique sets for 10 pairs
+*/
+let currentPair = 0;
+
+const PAIR_SETS = [
+  // Pair 1
+  {
+    name: 'Pair 1',
+    color: '#E74C3C',
+    // Drag & Drop puzzles (3 unique to this pair)
+    dnd: [
+      {noun:'hat',      adjectives:[{word:'elegant',type:'opinion'},{word:'small',type:'size'},{word:'red',type:'colour'},{word:'Italian',type:'origin'}]},
+      {noun:'bag',      adjectives:[{word:'stylish',type:'opinion'},{word:'tiny',type:'size'},{word:'leather',type:'material'},{word:'French',type:'origin'}]},
+      {noun:'ring',     adjectives:[{word:'beautiful',type:'opinion'},{word:'golden',type:'colour'},{word:'ancient',type:'age'},{word:'Egyptian',type:'origin'}]},
+    ],
+    // Audio passage & adjectives
+    passage: {
+      title:'The Garden',
+      text:"Inside the vast green garden stood a magnificent old stone fountain. Colourful tiny butterflies danced around the fragrant fresh roses. A cheerful young gardener trimmed the enormous circular hedge with great care.",
+      adjs:[
+        {word:'vast',       type:'size',     label:'Size — how large'},
+        {word:'green',      type:'colour',   label:'Colour — the colour'},
+        {word:'magnificent',type:'opinion',  label:'Opinion — your impression'},
+        {word:'old',        type:'age',      label:'Age — how old'},
+        {word:'stone',      type:'material', label:'Material — made of what'},
+        {word:'tiny',       type:'size',     label:'Size — how small'},
+        {word:'fresh',      type:'age',      label:'Age — how recent/new'},
+        {word:'circular',   type:'shape',    label:'Shape — the shape'},
+      ]
+    },
+    // Scramble sentences
+    scramble: [
+      {words:['a','wonderful','large','old','round','blue','Chinese','porcelain','vase'],   correct:['a','wonderful','large','old','round','blue','Chinese','porcelain','vase']},
+      {words:['the','lovely','tiny','modern','oval','pink','Japanese','silk','cushion'],     correct:['the','lovely','tiny','modern','oval','pink','Japanese','silk','cushion']},
+      {words:['a','magnificent','enormous','ancient','rectangular','golden','Egyptian','stone','temple'], correct:['a','magnificent','enormous','ancient','rectangular','golden','Egyptian','stone','temple']},
+    ],
+    // Picture nouns for sentence builder
+    pictures: [
+      {emoji:'🌊',name:'An Ocean', noun:'ocean', hint:'Use: opinion + size + colour'},
+      {emoji:'🦁',name:'A Lion',   noun:'lion',  hint:'Use: opinion + size + age + colour'},
+    ],
+    // Chain story starter
+    storyStarter: 'At dawn, a traveller arrived at the gate of the kingdom…',
+    // Quiz variant (indices into master quiz)
+    quizSet: [0,1,2,3,4,5,6,7,8,9],
+    // Crossword to use
+    cwSet: 0,
+  },
+  // Pair 2
+  {
+    name: 'Pair 2', color: '#E67E22',
+    dnd: [
+      {noun:'lamp',     adjectives:[{word:'gorgeous',type:'opinion'},{word:'tall',type:'size'},{word:'antique',type:'age'},{word:'brass',type:'material'}]},
+      {noun:'dress',    adjectives:[{word:'lovely',type:'opinion'},{word:'long',type:'size'},{word:'scarlet',type:'colour'},{word:'silk',type:'material'}]},
+      {noun:'car',      adjectives:[{word:'sleek',type:'opinion'},{word:'tiny',type:'size'},{word:'Italian',type:'origin'},{word:'racing',type:'purpose'}]},
+    ],
+    passage: {
+      title:'The Workshop',
+      text:"In a dusty old workshop, a skilled elderly craftsman shaped a beautiful round wooden bowl. Enormous ancient tools hung on the narrow stone walls. A shiny new copper kettle sat on the rough wooden bench.",
+      adjs:[
+        {word:'old',      type:'age',      label:'Age — how old'},
+        {word:'elderly',  type:'age',      label:'Age — approximate age'},
+        {word:'beautiful',type:'opinion',  label:'Opinion — your impression'},
+        {word:'round',    type:'shape',    label:'Shape — the shape'},
+        {word:'wooden',   type:'material', label:'Material — made of what'},
+        {word:'enormous', type:'size',     label:'Size — how large'},
+        {word:'narrow',   type:'shape',    label:'Shape — the width/shape'},
+        {word:'copper',   type:'material', label:'Material — made of what'},
+      ]
+    },
+    scramble: [
+      {words:['a','dreadful','enormous','ancient','square','grey','Scottish','granite','castle'],  correct:['a','dreadful','enormous','ancient','square','grey','Scottish','granite','castle']},
+      {words:['the','gorgeous','little','new','oval','golden','French','silk','scarf'],             correct:['the','gorgeous','little','new','oval','golden','French','silk','scarf']},
+      {words:['some','horrible','large','medieval','round','black','German','iron','shields'],      correct:['some','horrible','large','medieval','round','black','German','iron','shields']},
+    ],
+    pictures: [
+      {emoji:'🌋',name:'A Volcano',noun:'volcano', hint:'Use: opinion + size + age'},
+      {emoji:'🐘',name:'An Elephant',noun:'elephant',hint:'Use: opinion + size + colour + origin'},
+    ],
+    storyStarter: 'Deep in the forest, a wanderer discovered a hidden village…',
+    quizSet: [0,2,4,6,8,1,3,5,7,9],
+    cwSet: 1,
+  },
+  // Pair 3
+  {
+    name: 'Pair 3', color: '#D4AC0D',
+    dnd: [
+      {noun:'sword',    adjectives:[{word:'magnificent',type:'opinion'},{word:'long',type:'size'},{word:'ancient',type:'age'},{word:'silver',type:'colour'}]},
+      {noun:'bridge',   adjectives:[{word:'impressive',type:'opinion'},{word:'enormous',type:'size'},{word:'old',type:'age'},{word:'stone',type:'material'}]},
+      {noun:'flower',   adjectives:[{word:'beautiful',type:'opinion'},{word:'tiny',type:'size'},{word:'purple',type:'colour'},{word:'French',type:'origin'}]},
+    ],
+    passage: {
+      title:'The Library',
+      text:"The quiet ancient library held thousands of precious old books. Tall wooden shelves lined the narrow rectangular rooms. A curious young student sat beneath a gorgeous stained glass window, reading a thick leather-bound volume.",
+      adjs:[
+        {word:'ancient',  type:'age',      label:'Age — very old'},
+        {word:'precious', type:'opinion',  label:'Opinion — how valuable'},
+        {word:'old',      type:'age',      label:'Age — how old'},
+        {word:'tall',     type:'size',     label:'Size — the height'},
+        {word:'wooden',   type:'material', label:'Material — made of what'},
+        {word:'narrow',   type:'shape',    label:'Shape — the width'},
+        {word:'rectangular',type:'shape',  label:'Shape — the shape'},
+        {word:'gorgeous', type:'opinion',  label:'Opinion — your impression'},
+      ]
+    },
+    scramble: [
+      {words:['a','brilliant','small','old','rectangular','brown','English','leather','notebook'],  correct:['a','brilliant','small','old','rectangular','brown','English','leather','notebook']},
+      {words:['the','ugly','enormous','ancient','circular','grey','Roman','marble','column'],        correct:['the','ugly','enormous','ancient','circular','grey','Roman','marble','column']},
+      {words:['a','charming','tiny','modern','oval','white','Italian','ceramic','plate'],            correct:['a','charming','tiny','modern','oval','white','Italian','ceramic','plate']},
+    ],
+    pictures: [
+      {emoji:'🏔',name:'A Mountain',noun:'mountain', hint:'Use: opinion + size + age + colour'},
+      {emoji:'🦅',name:'An Eagle',  noun:'eagle',    hint:'Use: opinion + size + colour + origin'},
+    ],
+    storyStarter: 'On a stormy night, the lighthouse keeper spotted something unusual…',
+    quizSet: [1,0,3,2,5,4,7,6,9,8],
+    cwSet: 0,
+  },
+  // Pair 4
+  {
+    name: 'Pair 4', color: '#7B2D8B',
+    dnd: [
+      {noun:'chair',    adjectives:[{word:'lovely',type:'opinion'},{word:'small',type:'size'},{word:'wooden',type:'material'},{word:'rocking',type:'purpose'}]},
+      {noun:'necklace', adjectives:[{word:'exquisite',type:'opinion'},{word:'long',type:'size'},{word:'golden',type:'colour'},{word:'ancient',type:'age'}]},
+      {noun:'drum',     adjectives:[{word:'loud',type:'opinion'},{word:'enormous',type:'size'},{word:'Brazilian',type:'origin'},{word:'wooden',type:'material'}]},
+    ],
+    passage: {
+      title:'The Market',
+      text:"Early on a cold morning, Maria walked through the bustling local market. She passed stalls piled high with enormous golden mangoes and tiny fresh strawberries. A cheerful elderly vendor offered a beautiful handwoven silk scarf.",
+      adjs:[
+        {word:'cold',      type:'age',      label:'Age — describes temperature/time'},
+        {word:'bustling',  type:'opinion',  label:'Opinion — your impression'},
+        {word:'local',     type:'origin',   label:'Origin — where it is from'},
+        {word:'enormous',  type:'size',     label:'Size — how large'},
+        {word:'golden',    type:'colour',   label:'Colour — the colour'},
+        {word:'tiny',      type:'size',     label:'Size — how small'},
+        {word:'cheerful',  type:'opinion',  label:'Opinion — impression of mood'},
+        {word:'silk',      type:'material', label:'Material — made of what'},
+      ]
+    },
+    scramble: [
+      {words:['a','terrible','huge','ancient','square','black','Mexican','stone','calendar'],        correct:['a','terrible','huge','ancient','square','black','Mexican','stone','calendar']},
+      {words:['the','delightful','little','new','round','red','Chinese','paper','lantern'],          correct:['the','delightful','little','new','round','red','Chinese','paper','lantern']},
+      {words:['a','magnificent','enormous','old','rectangular','golden','Egyptian','stone','temple'],correct:['a','magnificent','enormous','old','rectangular','golden','Egyptian','stone','temple']},
+    ],
+    pictures: [
+      {emoji:'🌺',name:'A Flower',noun:'flower', hint:'Use: opinion + size + colour + origin'},
+      {emoji:'🏯',name:'A Palace',noun:'palace', hint:'Use: opinion + size + age + material'},
+    ],
+    storyStarter: 'Beneath the sea, an explorer discovered a forgotten city…',
+    quizSet: [2,4,6,8,0,3,5,7,9,1],
+    cwSet: 1,
+  },
+  // Pair 5
+  {
+    name: 'Pair 5', color: '#2980B9',
+    dnd: [
+      {noun:'kite',     adjectives:[{word:'beautiful',type:'opinion'},{word:'large',type:'size'},{word:'triangular',type:'shape'},{word:'red',type:'colour'}]},
+      {noun:'coat',     adjectives:[{word:'warm',type:'opinion'},{word:'long',type:'size'},{word:'old',type:'age'},{word:'woollen',type:'material'}]},
+      {noun:'castle',   adjectives:[{word:'magnificent',type:'opinion'},{word:'enormous',type:'size'},{word:'medieval',type:'age'},{word:'stone',type:'material'}]},
+    ],
+    passage: {
+      title:'The Beach',
+      text:"On a warm sunny afternoon, children played on the wide sandy beach. Colourful old fishing boats bobbed on the sparkling blue water. A tiny curious crab scuttled across the smooth flat rocks near the shore.",
+      adjs:[
+        {word:'warm',     type:'opinion',  label:'Opinion — pleasant feeling'},
+        {word:'wide',     type:'size',     label:'Size — the width'},
+        {word:'sandy',    type:'material', label:'Material — made of what'},
+        {word:'old',      type:'age',      label:'Age — how old'},
+        {word:'blue',     type:'colour',   label:'Colour — the colour'},
+        {word:'tiny',     type:'size',     label:'Size — how small'},
+        {word:'smooth',   type:'opinion',  label:'Opinion — texture'},
+        {word:'flat',     type:'shape',    label:'Shape — the shape'},
+      ]
+    },
+    scramble: [
+      {words:['a','gorgeous','large','ancient','oval','blue','Greek','marble','statue'],             correct:['a','gorgeous','large','ancient','oval','blue','Greek','marble','statue']},
+      {words:['the','horrible','tiny','old','square','grey','Scottish','stone','cottage'],           correct:['the','horrible','tiny','old','square','grey','Scottish','stone','cottage']},
+      {words:['some','lovely','long','new','rectangular','white','Italian','silk','curtains'],       correct:['some','lovely','long','new','rectangular','white','Italian','silk','curtains']},
+    ],
+    pictures: [
+      {emoji:'🌊',name:'The Sea',   noun:'sea',    hint:'Use: opinion + size + colour'},
+      {emoji:'🐬',name:'A Dolphin', noun:'dolphin',hint:'Use: opinion + size + colour + shape'},
+    ],
+    storyStarter: 'High on the rooftop, a young inventor tested her newest machine…',
+    quizSet: [4,6,8,0,2,5,7,9,1,3],
+    cwSet: 0,
+  },
+  // Pair 6
+  {
+    name: 'Pair 6', color: '#16A085',
+    dnd: [
+      {noun:'pot',      adjectives:[{word:'beautiful',type:'opinion'},{word:'large',type:'size'},{word:'round',type:'shape'},{word:'cooking',type:'purpose'}]},
+      {noun:'shoes',    adjectives:[{word:'awful',type:'opinion'},{word:'tiny',type:'size'},{word:'grey',type:'colour'},{word:'training',type:'purpose'}]},
+      {noun:'map',      adjectives:[{word:'fascinating',type:'opinion'},{word:'enormous',type:'size'},{word:'ancient',type:'age'},{word:'paper',type:'material'}]},
+    ],
+    passage: {
+      title:'The Festival',
+      text:"The noisy colourful festival filled the narrow cobblestone streets. Enormous bright lanterns hung from every ancient wooden balcony. Cheerful local musicians played beautiful traditional songs on their handmade instruments.",
+      adjs:[
+        {word:'noisy',    type:'opinion',  label:'Opinion — your impression'},
+        {word:'colourful',type:'opinion',  label:'Opinion — pleasing to eye'},
+        {word:'narrow',   type:'shape',    label:'Shape — the width'},
+        {word:'enormous', type:'size',     label:'Size — how large'},
+        {word:'bright',   type:'opinion',  label:'Opinion — intensity'},
+        {word:'ancient',  type:'age',      label:'Age — how old'},
+        {word:'wooden',   type:'material', label:'Material — made of what'},
+        {word:'local',    type:'origin',   label:'Origin — where from'},
+      ]
+    },
+    scramble: [
+      {words:['a','superb','small','old','circular','green','Irish','glass','pendant'],              correct:['a','superb','small','old','circular','green','Irish','glass','pendant']},
+      {words:['the','dreadful','large','ancient','rectangular','brown','African','wooden','mask'],   correct:['the','dreadful','large','ancient','rectangular','brown','African','wooden','mask']},
+      {words:['a','lovely','tiny','modern','oval','silver','Swedish','metal','brooch'],              correct:['a','lovely','tiny','modern','oval','silver','Swedish','metal','brooch']},
+    ],
+    pictures: [
+      {emoji:'🌴',name:'A Tree',  noun:'tree',  hint:'Use: opinion + size + age + colour'},
+      {emoji:'🎺',name:'A Trumpet',noun:'trumpet',hint:'Use: opinion + size + age + material'},
+    ],
+    storyStarter: 'In the middle of the night, the old clock tower began to chime…',
+    quizSet: [5,7,9,1,3,0,2,4,6,8],
+    cwSet: 1,
+  },
+  // Pair 7
+  {
+    name: 'Pair 7', color: '#D35400',
+    dnd: [
+      {noun:'table',    adjectives:[{word:'wonderful',type:'opinion'},{word:'long',type:'size'},{word:'ancient',type:'age'},{word:'wooden',type:'material'}]},
+      {noun:'hat',      adjectives:[{word:'ridiculous',type:'opinion'},{word:'tall',type:'size'},{word:'purple',type:'colour'},{word:'velvet',type:'material'}]},
+      {noun:'knife',    adjectives:[{word:'sharp',type:'opinion'},{word:'long',type:'size'},{word:'silver',type:'colour'},{word:'hunting',type:'purpose'}]},
+    ],
+    passage: {
+      title:'The Zoo',
+      text:"At the lively modern zoo, excited young visitors crowded around every enclosure. A majestic elderly elephant raised its enormous wrinkled trunk. Tiny colourful parrots chattered on thick wooden perches inside their vast rectangular cage.",
+      adjs:[
+        {word:'lively',   type:'opinion',  label:'Opinion — your impression'},
+        {word:'modern',   type:'age',      label:'Age — how new/recent'},
+        {word:'young',    type:'age',      label:'Age — approximate age'},
+        {word:'majestic', type:'opinion',  label:'Opinion — impressive'},
+        {word:'elderly',  type:'age',      label:'Age — approximate age'},
+        {word:'enormous', type:'size',     label:'Size — how large'},
+        {word:'tiny',     type:'size',     label:'Size — how small'},
+        {word:'wooden',   type:'material', label:'Material — made of what'},
+      ]
+    },
+    scramble: [
+      {words:['a','charming','small','old','square','red','Indian','silk','cushion'],                correct:['a','charming','small','old','square','red','Indian','silk','cushion']},
+      {words:['the','horrible','enormous','medieval','round','dark','Spanish','stone','tower'],      correct:['the','horrible','enormous','medieval','round','dark','Spanish','stone','tower']},
+      {words:['a','gorgeous','long','new','oval','golden','Turkish','metal','tray'],                 correct:['a','gorgeous','long','new','oval','golden','Turkish','metal','tray']},
+    ],
+    pictures: [
+      {emoji:'🐆',name:'A Cheetah',noun:'cheetah', hint:'Use: opinion + size + colour + origin'},
+      {emoji:'🌵',name:'A Cactus', noun:'cactus',  hint:'Use: opinion + size + shape + colour'},
+    ],
+    storyStarter: 'When the last train left the station, only one passenger remained…',
+    quizSet: [6,8,0,2,4,7,9,1,3,5],
+    cwSet: 0,
+  },
+  // Pair 8
+  {
+    name: 'Pair 8', color: '#0E8A8A',
+    dnd: [
+      {noun:'palace',   adjectives:[{word:'magnificent',type:'opinion'},{word:'enormous',type:'size'},{word:'ancient',type:'age'},{word:'marble',type:'material'}]},
+      {noun:'basket',   adjectives:[{word:'pretty',type:'opinion'},{word:'small',type:'size'},{word:'oval',type:'shape'},{word:'wicker',type:'material'}]},
+      {noun:'shirt',    adjectives:[{word:'smart',type:'opinion'},{word:'long',type:'size'},{word:'blue',type:'colour'},{word:'cotton',type:'material'}]},
+    ],
+    passage: {
+      title:'The School',
+      text:"Kopiya Junior School's bright new building stood on a wide green hill. Enthusiastic young learners filled the modern rectangular classrooms. Beautiful handmade artworks decorated the long white corridors, and a cheerful old caretaker polished the shiny wooden floors.",
+      adjs:[
+        {word:'bright',      type:'opinion',  label:'Opinion — your impression'},
+        {word:'new',         type:'age',      label:'Age — how recent'},
+        {word:'wide',        type:'size',     label:'Size — the width'},
+        {word:'green',       type:'colour',   label:'Colour — the colour'},
+        {word:'young',       type:'age',      label:'Age — approximate age'},
+        {word:'rectangular', type:'shape',    label:'Shape — the shape'},
+        {word:'beautiful',   type:'opinion',  label:'Opinion — attractive'},
+        {word:'wooden',      type:'material', label:'Material — made of what'},
+      ]
+    },
+    scramble: [
+      {words:['a','brilliant','large','old','round','silver','English','metal','coin'],              correct:['a','brilliant','large','old','round','silver','English','metal','coin']},
+      {words:['the','lovely','small','modern','rectangular','white','Swedish','plastic','chair'],    correct:['the','lovely','small','modern','rectangular','white','Swedish','plastic','chair']},
+      {words:['a','terrible','enormous','ancient','oval','dark','African','wooden','shield'],        correct:['a','terrible','enormous','ancient','oval','dark','African','wooden','shield']},
+    ],
+    pictures: [
+      {emoji:'🏫',name:'The School',noun:'school', hint:'Use: opinion + size + age + material'},
+      {emoji:'📚',name:'A Bookshelf',noun:'bookshelf',hint:'Use: opinion + size + colour + material'},
+    ],
+    storyStarter: 'The first day at a new school is always full of surprises…',
+    quizSet: [7,9,1,3,5,0,2,4,6,8],
+    cwSet: 1,
+  },
+  // Pair 9
+  {
+    name: 'Pair 9', color: '#1B2A4A',
+    dnd: [
+      {noun:'boat',     adjectives:[{word:'magnificent',type:'opinion'},{word:'large',type:'size'},{word:'old',type:'age'},{word:'wooden',type:'material'}]},
+      {noun:'ring',     adjectives:[{word:'exquisite',type:'opinion'},{word:'tiny',type:'size'},{word:'golden',type:'colour'},{word:'diamond',type:'material'}]},
+      {noun:'mat',      adjectives:[{word:'bright',type:'opinion'},{word:'round',type:'shape'},{word:'red',type:'colour'},{word:'prayer',type:'purpose'}]},
+    ],
+    passage: {
+      title:'The Farm',
+      text:"The peaceful green farm stretched across a wide flat valley. Cheerful young workers picked fresh ripe fruit under the clear blue sky. An enormous old tractor rattled along the dusty narrow path between the endless rectangular fields.",
+      adjs:[
+        {word:'peaceful', type:'opinion',  label:'Opinion — your impression'},
+        {word:'green',    type:'colour',   label:'Colour — the colour'},
+        {word:'wide',     type:'size',     label:'Size — the width'},
+        {word:'flat',     type:'shape',    label:'Shape — the shape'},
+        {word:'young',    type:'age',      label:'Age — approximate age'},
+        {word:'fresh',    type:'age',      label:'Age — how recent/new'},
+        {word:'blue',     type:'colour',   label:'Colour — the colour'},
+        {word:'enormous', type:'size',     label:'Size — how large'},
+      ]
+    },
+    scramble: [
+      {words:['a','wonderful','long','old','rectangular','green','English','glass','greenhouse'],    correct:['a','wonderful','long','old','rectangular','green','English','glass','greenhouse']},
+      {words:['the','terrible','tiny','ancient','round','black','Japanese','iron','bell'],           correct:['the','terrible','tiny','ancient','round','black','Japanese','iron','bell']},
+      {words:['a','gorgeous','enormous','new','square','golden','American','wooden','barn'],         correct:['a','gorgeous','enormous','new','square','golden','American','wooden','barn']},
+    ],
+    pictures: [
+      {emoji:'🐄',name:'A Cow',  noun:'cow',  hint:'Use: opinion + size + colour + origin'},
+      {emoji:'🌾',name:'A Field',noun:'field',hint:'Use: opinion + size + shape + colour'},
+    ],
+    storyStarter: 'At sunrise, a farmer found mysterious footprints in the fresh mud…',
+    quizSet: [8,0,2,4,6,9,1,3,5,7],
+    cwSet: 0,
+  },
+  // Pair 10
+  {
+    name: 'Pair 10', color: '#922B21',
+    dnd: [
+      {noun:'crown',    adjectives:[{word:'magnificent',type:'opinion'},{word:'large',type:'size'},{word:'ancient',type:'age'},{word:'golden',type:'colour'}]},
+      {noun:'blanket',  adjectives:[{word:'cosy',type:'opinion'},{word:'large',type:'size'},{word:'soft',type:'opinion'},{word:'woollen',type:'material'}]},
+      {noun:'tower',    adjectives:[{word:'frightening',type:'opinion'},{word:'tall',type:'size'},{word:'medieval',type:'age'},{word:'stone',type:'material'}]},
+    ],
+    passage: {
+      title:'The Museum',
+      text:"The grand old museum housed many precious ancient artefacts. Glass cases displayed beautiful small golden jewellery from distant civilisations. A knowledgeable young guide led a group past enormous colourful oil paintings and delicate carved ivory figurines.",
+      adjs:[
+        {word:'grand',    type:'opinion',  label:'Opinion — impressive'},
+        {word:'old',      type:'age',      label:'Age — how old'},
+        {word:'precious', type:'opinion',  label:'Opinion — how valuable'},
+        {word:'ancient',  type:'age',      label:'Age — very old'},
+        {word:'beautiful',type:'opinion',  label:'Opinion — attractive'},
+        {word:'small',    type:'size',     label:'Size — how small'},
+        {word:'golden',   type:'colour',   label:'Colour — the colour'},
+        {word:'enormous', type:'size',     label:'Size — how large'},
+      ]
+    },
+    scramble: [
+      {words:['a','wonderful','large','ancient','round','white','Greek','marble','bowl'],            correct:['a','wonderful','large','ancient','round','white','Greek','marble','bowl']},
+      {words:['the','beautiful','tiny','new','oval','golden','South African','gold','coin'],         correct:['the','beautiful','tiny','new','oval','golden','South African','gold','coin']},
+      {words:['a','horrible','enormous','old','square','dark','Scottish','stone','dungeon'],         correct:['a','horrible','enormous','old','square','dark','Scottish','stone','dungeon']},
+    ],
+    pictures: [
+      {emoji:'🏛',name:'A Museum',noun:'museum', hint:'Use: opinion + size + age + material'},
+      {emoji:'🗿',name:'A Statue', noun:'statue', hint:'Use: opinion + size + age + colour + material'},
+    ],
+    storyStarter: 'The night before the big competition, the team made an unexpected discovery…',
+    quizSet: [9,1,3,5,7,0,2,4,6,8],
+    cwSet: 1,
+  },
+];
+
+// Two crossword sets
+const CW_SETS = [
+  // Set A -- pairs 1,3,5,7,9
+  {
+    answers: {
+      GORGEOUS: {dir:'across',row:0,col:0,  num:1},
+      ANCIENT:  {dir:'across',row:2,col:0,  num:3},
+      ROUND:    {dir:'across',row:4,col:0,  num:5},
+      WOODEN:   {dir:'across',row:6,col:0,  num:7},
+      SCARLET:  {dir:'across',row:8,col:0,  num:9},
+      GIGANTIC: {dir:'down',  row:0,col:9,  num:2},
+      ITALIAN:  {dir:'down',  row:0,col:10, num:4},
+      LEATHER:  {dir:'down',  row:0,col:8,  num:6},
+      TINY:     {dir:'down',  row:1,col:7,  num:8},
+      COOKING:  {dir:'down',  row:4,col:11, num:10},
+    },
+    clues: {
+      across:{
+        1:{clue:'Opinion: strikingly beautiful or attractive (8)',   answer:'GORGEOUS'},
+        3:{clue:'Age: from the very distant past (7)',               answer:'ANCIENT'},
+        5:{clue:'Shape: perfectly circular in form (5)',             answer:'ROUND'},
+        7:{clue:'Material: made from trees (6)',                     answer:'WOODEN'},
+        9:{clue:'Colour: vivid, bright red (7)',                     answer:'SCARLET'},
+      },
+      down:{
+        2:{clue:'Size: extremely large; colossal (8)',               answer:'GIGANTIC'},
+        4:{clue:'Origin: coming from Italy (7)',                     answer:'ITALIAN'},
+        6:{clue:'Material: made from treated animal skin (7)',       answer:'LEATHER'},
+        8:{clue:'Size: very small -- opposite of huge (4)',          answer:'TINY'},
+        10:{clue:'Purpose: a ___ pot -- used to prepare meals (7)', answer:'COOKING'},
+      }
+    }
+  },
+  // Set B -- pairs 2,4,6,8,10
+  {
+    answers: {
+      BEAUTIFUL: {dir:'across',row:0,col:0,  num:1},
+      ENORMOUS:  {dir:'across',row:2,col:0,  num:3},
+      FRENCH:    {dir:'across',row:4,col:0,  num:5},
+      PLASTIC:   {dir:'across',row:6,col:0,  num:7},
+      ANCIENT:   {dir:'across',row:8,col:0,  num:9},
+      BRONZE:    {dir:'down',  row:0,col:10, num:2},
+      SLEEPING:  {dir:'down',  row:0,col:11, num:4},
+      NARROW:    {dir:'down',  row:2,col:9,  num:6},
+      FLAT:      {dir:'down',  row:4,col:8,  num:8},
+      OVAL:      {dir:'down',  row:6,col:7,  num:10},
+    },
+    clues: {
+      across:{
+        1:{clue:'Opinion: very pleasing to look at (9)',             answer:'BEAUTIFUL'},
+        3:{clue:'Size: very large indeed (8)',                       answer:'ENORMOUS'},
+        5:{clue:'Origin: from France (6)',                           answer:'FRENCH'},
+        7:{clue:'Material: synthetic polymer used in many products (7)', answer:'PLASTIC'},
+        9:{clue:'Age: belonging to the very distant past (7)',       answer:'ANCIENT'},
+      },
+      down:{
+        2:{clue:'Material: reddish-brown copper and tin alloy (6)',  answer:'BRONZE'},
+        4:{clue:'Purpose: a ___ bag -- used when camping overnight (8)', answer:'SLEEPING'},
+        6:{clue:'Shape: not wide; thin (6)',                         answer:'NARROW'},
+        8:{clue:'Shape: level, without bumps or ridges (4)',         answer:'FLAT'},
+        10:{clue:'Shape: egg-shaped or elliptical (4)',              answer:'OVAL'},
+      }
+    }
+  }
+];
+function selectPair(num) {
+  currentPair = num;
+  // Update all pair buttons
+  for(let i=1;i<=10;i++){
+    const btn = document.getElementById('pairBtn'+i);
+    if(!btn) continue;
+    const set = PAIR_SETS[i-1];
+    if(i===num){
+      btn.style.background = set.color;
+      btn.style.color = '#fff';
+      btn.style.borderColor = set.color;
+      btn.style.transform = 'scale(1.05)';
+    } else {
+      btn.style.background = '#fff';
+      btn.style.color = 'var(--navy)';
+      btn.style.borderColor = 'var(--border)';
+      btn.style.transform = '';
+    }
+  }
+  const set = PAIR_SETS[num-1];
+  // Show confirm
+  const confirm = document.getElementById('pairConfirm');
+  const label = document.getElementById('pairLabel');
+  confirm.style.display = 'block';
+  confirm.style.borderLeft = '4px solid '+set.color;
+  label.textContent = set.name + ' — ready to go!';
+  // Update footer
+  const fp = document.getElementById('footerPair');
+  if(fp) fp.textContent = num;
+  // Rebuild activities with pair data
+  rebuildForPair(num);
+  // Show mini toast
+  showToast('🎉 '+set.name+' activated! All activities updated.');
+}
+
+function rebuildForPair(num){
+  const set = PAIR_SETS[num-1];
+  // Rebuild DnD
+  DND_PUZZLES_ACTIVE = [...set.dnd];
+  dndCurrent = 0;
+  buildDnd();
+  // Rebuild audio
+  ACTIVE_PASSAGE = set.passage;
+  rebuildAudio();
+  // Rebuild scramble
+  SCRAMBLE_ACTIVE = [...set.scramble];
+  scrambleCurrent = 0;
+  buildScramble();
+  // Rebuild pictures
+  PICTURES_ACTIVE = [...set.pictures];
+  buildPictures();
+  // Rebuild crossword
+  CW_ACTIVE = CW_SETS[set.cwSet];
+  cwGrid = Array.from({length:GRID_SIZE},()=>Array(GRID_SIZE).fill(null));
+  buildCrossword();
+  // Update story starter
+  STORY_STARTER_ACTIVE = set.storyStarter;
+  storyLines = [];
+  renderStory();
+  document.getElementById('orderChecker').style.display='none';
+  // Update quiz set
+  QUIZ_SET_ACTIVE = set.quizSet;
+  quizIdx=0;quizScore=0;quizAnswered=Array(QUIZ_QUESTIONS.length).fill(null);
+  buildQuiz();
+  // Add pair badge to each activity header
+  document.querySelectorAll('.act-pair-badge').forEach(b=>b.remove());
+  document.querySelectorAll('.activity-header').forEach(header=>{
+    const badge = document.createElement('div');
+    badge.className='act-pair-badge';
+    badge.style.cssText='margin-left:auto;background:'+set.color+';color:#fff;padding:.25rem .75rem;border-radius:20px;font-size:.78rem;font-weight:700;white-space:nowrap;flex-shrink:0';
+    badge.textContent=set.name;
+    header.appendChild(badge);
+  });
+}
+
+function showToast(msg){
+  let t = document.getElementById('toast');
+  if(!t){
+    t=document.createElement('div');t.id='toast';
+    t.style.cssText='position:fixed;bottom:4.5rem;left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:.65rem 1.25rem;border-radius:30px;font-size:.88rem;font-weight:600;z-index:500;opacity:0;transition:all .3s;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.3)';
+    document.body.appendChild(t);
+  }
+  t.textContent=msg;
+  t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';
+  clearTimeout(t._timer);
+  t._timer=setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(-50%) translateY(10px)'},3000);
+}
+
+/* active data pointers — moved to top */
+
+/*    ACTIVITY 1 – MIND MAP
+*/
+const mmWords = {opinion:[],size:[],age:[],shape:[],colour:[],origin:[],material:[],purpose:[]};
+const mmTypeColors = TYPE_ORDER.map(t=>TYPE_META[t].color);
+
+function mmGetColor(){
+  return TYPE_META[document.getElementById('mmTypeSelect').value].color;
+}
+function mmUpdateColor(){}
+
+function mmAddWord(){
+  const inp=document.getElementById('mmWordInput');
+  const type=document.getElementById('mmTypeSelect').value;
+  const word=inp.value.trim();
+  if(!word)return;
+  if(mmWords[type].includes(word.toLowerCase())){inp.value='';return;}
+  mmWords[type].push(word.toLowerCase());
+  inp.value='';
+  mmRender();
+}
+
+function mmRemoveWord(type,word){
+  mmWords[type]=mmWords[type].filter(w=>w!==word);
+  mmRender();
+}
+
+function mmClear(){
+  TYPE_ORDER.forEach(t=>mmWords[t]=[]);
+  mmRender();
+}
+
+function mmRender(){
+  const canvas=document.getElementById('mmCanvas');
+  const cw=canvas.offsetWidth, ch=canvas.offsetHeight;
+  const cx=cw/2, cy=ch/2;
+
+  // Remove old nodes
+  canvas.querySelectorAll('.mm-node,.mm-branch').forEach(e=>e.remove());
+
+  // Draw SVG lines
+  const svgEl=document.getElementById('mmLines');
+  svgEl.setAttribute('width',cw);svgEl.setAttribute('height',ch);
+  let svgContent='';
+
+  TYPE_ORDER.forEach((type,i)=>{
+    const angle=(i/8)*2*Math.PI - Math.PI/2;
+    const r=165;
+    const nx=cx+Math.cos(angle)*r;
+    const ny=cy+Math.sin(angle)*r;
+    const meta=TYPE_META[type];
+    const wordCount=mmWords[type].length;
+
+    // Line from center to node
+    svgContent+=`<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="${meta.color}" stroke-width="2" stroke-opacity="0.5"/>`;
+
+    // Main type node
+    const node=document.createElement('div');
+    node.className='mm-node';
+    node.style.cssText=`background:${meta.color};left:${nx-45}px;top:${ny-18}px;width:90px`;
+    node.textContent=meta.label+(wordCount>0?` (${wordCount})`:'');
+    canvas.appendChild(node);
+    node.addEventListener('click',()=>{
+      document.getElementById('mmTypeSelect').value=type;
+    });
+
+    // Word sub-nodes
+    mmWords[type].forEach((word,wi)=>{
+      const wr=r+80;
+      const wangle=angle+(wi-(mmWords[type].length-1)/2)*0.22;
+      const wx=cx+Math.cos(wangle)*wr;
+      const wy=cy+Math.sin(wangle)*wr;
+      svgContent+=`<line x1="${nx}" y1="${ny}" x2="${wx}" y2="${wy}" stroke="${meta.color}" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="4"/>`;
+      const wnode=document.createElement('div');
+      wnode.className='mm-node';
+      wnode.style.cssText=`background:${meta.color};opacity:0.85;left:${wx-38}px;top:${wy-14}px;font-size:.72rem;padding:.3rem .55rem;min-width:60px`;
+      wnode.textContent=word;
+      wnode.onclick=()=>mmRemoveWord(type,word);
+      wnode.title='Click to remove';
+      canvas.appendChild(wnode);
+    });
+  });
+
+  svgEl.innerHTML=svgContent;
+
+  // Word chip list
+  const type=document.getElementById('mmTypeSelect').value;
+  const meta=TYPE_META[type];
+  const list=document.getElementById('mmWordList');
+  list.innerHTML=(mmWords[type].length===0?'<span style="color:var(--muted);font-size:.85rem">No words yet for '+meta.label+'</span>':
+    mmWords[type].map(w=>`<span class="mm-word-chip" style="background:${meta.color}" onclick="mmRemoveWord('${type}','${w}')">${w} ✕</span>`).join(''));
+}
+
+/*    ACTIVITY 2 – AUDIO / LISTEN
+*/
+const PASSAGE = {
+  text: "Early on a cold morning, Maria walked through the bustling local market. She passed stalls piled high with enormous golden mangoes and tiny fresh strawberries. A cheerful elderly vendor called out to her, offering a beautiful handwoven silk scarf. The smooth cobblestone path wound through rows of colourful ancient buildings with tall narrow windows. Children played around a grand old marble fountain at the centre of the square.",
+  adjectives: [
+    {word:'cold',       type:'age',      label:'Age — describes time/temperature quality'},
+    {word:'bustling',   type:'opinion',  label:'Opinion — describes your impression'},
+    {word:'local',      type:'origin',   label:'Origin — describes where something is from'},
+    {word:'enormous',   type:'size',     label:'Size — describes how big'},
+    {word:'golden',     type:'colour',   label:'Colour — describes the colour'},
+    {word:'tiny',       type:'size',     label:'Size — describes how small'},
+    {word:'fresh',      type:'age',      label:'Age — describes how new/recent'},
+    {word:'cheerful',   type:'opinion',  label:'Opinion — describes your impression'},
+    {word:'elderly',    type:'age',      label:'Age — describes approximate age'},
+    {word:'beautiful',  type:'opinion',  label:'Opinion — describes attractiveness'},
+    {word:'silk',       type:'material', label:'Material — describes what it is made of'},
+    {word:'smooth',     type:'opinion',  label:'Opinion — describes texture/feel'},
+    {word:'ancient',    type:'age',      label:'Age — describes great age'},
+    {word:'tall',       type:'size',     label:'Size — describes height'},
+    {word:'narrow',     type:'shape',    label:'Shape — describes the shape/width'},
+    {word:'old',        type:'age',      label:'Age — describes how old'},
+    {word:'marble',     type:'material', label:'Material — describes what it is made of'},
+  ]
+};
+// Select 8 well-spread adjectives for the activity
+const AUDIO_ADJS = [
+  PASSAGE.adjectives[0],  // cold - age
+  PASSAGE.adjectives[1],  // bustling - opinion
+  PASSAGE.adjectives[3],  // enormous - size
+  PASSAGE.adjectives[4],  // golden - colour
+  PASSAGE.adjectives[8],  // elderly - age
+  PASSAGE.adjectives[10], // silk - material
+  PASSAGE.adjectives[14], // narrow - shape
+  PASSAGE.adjectives[2],  // local - origin
+];
+const audioState = {classified:{}, active:null};
+
+function rebuildAudio(){
+  if(!ACTIVE_PASSAGE) return;
+  audioState.classified={};audioState.active=null;
+  const classEl=document.getElementById('classifyArea');
+  const fbEl=document.getElementById('audioFeedback');
+  if(classEl) classEl.style.display='none';
+  if(fbEl) fbEl.classList.remove('show');
+  const titleEl=document.getElementById('audioPassageTitle');
+  if(titleEl) titleEl.textContent='📻 '+ACTIVE_PASSAGE.title;
+  let txt=ACTIVE_PASSAGE.text;
+  const adjs=ACTIVE_PASSAGE.adjs;
+  let hhtml=txt;
+  adjs.forEach(function(a){
+    var re=new RegExp('\\b'+a.word+'\\b','i');
+    var w=a.word;
+    hhtml=hhtml.replace(re,'<span class="highlight" onclick="classifyAdj(this.textContent.trim())" title="Click to classify">'+w+'</span>');
+  });
+  var scriptEl=document.getElementById('audioScript');
+  if(scriptEl) scriptEl.innerHTML=hhtml;
+  var grid=document.getElementById('adjFoundGrid');
+  if(grid) grid.innerHTML=adjs.map(function(a){return '<div class="adj-slot" id="slot_'+a.word+'" title="'+a.word+'">'+a.word+'</div>';}).join('');
+  var scoreEl=document.getElementById('audioScore');
+  if(scoreEl) scoreEl.textContent='0/'+adjs.length;
+  window._ACTIVE_ADJS=adjs;
+}
+
+function buildAudioSection(){
+  const waveform=document.getElementById('waveform');
+  for(let i=0;i<40;i++){
+    const bar=document.createElement('div');
+    bar.className='audio-bar';
+    const h=20+Math.random()*35;
+    bar.style.height=h+'px';
+    waveform.appendChild(bar);
+  }
+
+  // Build highlighted script
+  let t=PASSAGE.text;
+  const script=document.getElementById('audioScript');
+  // Replace adjectives with spans
+  let html=t;
+  AUDIO_ADJS.forEach(function(a){
+    var re=new RegExp('\\b'+a.word+'\\b','i');
+    var w=a.word;
+    html=html.replace(re,'<span class="highlight" onclick="classifyAdj(this.textContent.trim())" title="Click to classify">'+w+'</span>');
+  });
+  script.innerHTML=html;
+
+  // Build slot grid
+  const grid=document.getElementById('adjFoundGrid');
+  grid.innerHTML=AUDIO_ADJS.map(a=>`
+    <div class="adj-slot" id="slot_${a.word}" title="${a.word}">${a.word}</div>
+  `).join('');
+
+  // Build classify buttons
+  const btns=document.getElementById('classifyBtns');
+  btns.innerHTML=TYPE_ORDER.map(t=>`
+    <button class="btn btn-sm" style="background:${TYPE_META[t].color};color:#fff" onclick="submitClassify('${t}')" title="${TYPE_META[t].q}">${TYPE_META[t].label}<span style="font-size:.7rem;opacity:.75;margin-left:.3rem">${TYPE_META[t].num}</span></button>
+  `).join('');
+}
+
+function classifyAdj(word){
+  var w = (word||'').toLowerCase().trim();
+  if(!w) return;
+  audioState.active=w;
+  if(audioState.classified[w]) return;
+  document.getElementById('classifyWord').textContent='"'+w+'"';
+  document.getElementById('classifyArea').style.display='block';
+  document.getElementById('audioFeedback').classList.remove('show');
+}
+
+function submitClassify(type){
+  const word=audioState.active;
+  if(!word)return;
+  const _adjList=window._ACTIVE_ADJS||AUDIO_ADJS;
+  const correct=_adjList.find(a=>a.word.toLowerCase()===word.toLowerCase());
+  const fb=document.getElementById('audioFeedback');
+  const _wl=word.toLowerCase();
+  const slot=document.getElementById('slot_'+_wl)||document.getElementById('slot_'+word);
+  if(correct && correct.type===type){
+    audioState.classified[word]=type;
+    slot.classList.add('filled');
+    slot.style.background=TYPE_META[type].color;
+    slot.style.color='#fff';
+    slot.style.borderColor=TYPE_META[type].color;
+    slot.innerHTML=word+'<br><small style="font-size:.7rem;opacity:.85">'+TYPE_META[type].label+'</small>';
+    const hint=correct.label||'';
+    showFeedback('audioFeedback','correct','✓ Correct! "'+word+'" is a <strong>'+TYPE_META[type].label+'</strong> adjective. '+hint);
+    // Update score
+    const _aLen=(window._ACTIVE_ADJS||AUDIO_ADJS).length;
+    const found=Object.keys(audioState.classified).length;
+    document.getElementById('audioScore').textContent=found+'/'+_aLen;
+    document.getElementById('classifyArea').style.display='none';
+    if(found===(window._ACTIVE_ADJS||AUDIO_ADJS).length){
+      showFeedback('audioFeedback','correct','🎉 Excellent! You identified all '+AUDIO_ADJS.length+' adjectives correctly!');
+      sectionProgress.act2=true; updateProgress();
+    }
+  } else {
+    showFeedback('audioFeedback','wrong','✗ Not quite. Try again! Hint: What question does "'+word+'" answer?');
+  }
+}
+
+function readPassage(){
+  if('speechSynthesis' in window){
+    window.speechSynthesis.cancel();
+    const passText=(ACTIVE_PASSAGE&&ACTIVE_PASSAGE.text)?ACTIVE_PASSAGE.text:PASSAGE.text;
+    const utt=new SpeechSynthesisUtterance(passText);
+    utt.rate=0.82; utt.pitch=1.05; utt.lang='en-GB';
+    const bars=document.querySelectorAll('.audio-bar');
+    const totalWords=passText.split(' ').length;
+    let wordIdx=0;
+    // Animate waveform
+    let animInterval=setInterval(()=>{
+      bars.forEach(b=>b.classList.remove('playing'));
+      const played=Math.min(Math.floor(wordIdx/totalWords*bars.length),bars.length-1);
+      for(let b=0;b<played;b++) bars[b].classList.add('played');
+      const cur=Math.floor(Math.random()*3);
+      for(let b=played;b<Math.min(played+3,bars.length);b++) bars[b].classList.add('playing');
+    },200);
+    utt.onboundary=(e)=>{if(e.name==='word')wordIdx++;};
+    utt.onend=()=>{
+      clearInterval(animInterval);
+      bars.forEach(b=>b.classList.remove('played','playing'));
+      const btn=document.getElementById('ttsBtn');
+      btn.textContent='▶ Read Aloud'; btn.onclick=readPassage;
+    };
+    window.speechSynthesis.speak(utt);
+    const btn=document.getElementById('ttsBtn');
+    btn.textContent='⏹ Stop';
+    btn.onclick=()=>{
+      clearInterval(animInterval);
+      window.speechSynthesis.cancel();
+      bars.forEach(b=>b.classList.remove('played','playing'));
+      btn.textContent='▶ Read Aloud'; btn.onclick=readPassage;
+    };
+  } else {
+    showFeedback('audioFeedback','info','Text-to-speech is not available in this browser. Please read the passage below yourself and click the highlighted words.');
+  }
+}
+
+/*    ACTIVITY 3 – DRAG & DROP
+*/
+const DND_PUZZLES = [
+  {noun:'scarf',    adjectives:[{word:'silk',type:'material'},{word:'long',type:'size'},{word:'beautiful',type:'opinion'},{word:'red',type:'colour'}]},
+  {noun:'car',      adjectives:[{word:'racing',type:'purpose'},{word:'Italian',type:'origin'},{word:'sleek',type:'opinion'},{word:'old',type:'age'}]},
+  {noun:'vase',     adjectives:[{word:'ceramic',type:'material'},{word:'oval',type:'shape'},{word:'gorgeous',type:'opinion'},{word:'blue',type:'colour'}]},
+  {noun:'table',    adjectives:[{word:'wooden',type:'material'},{word:'ancient',type:'age'},{word:'massive',type:'size'},{word:'wonderful',type:'opinion'}]},
+  {noun:'jacket',   adjectives:[{word:'leather',type:'material'},{word:'French',type:'origin'},{word:'stylish',type:'opinion'},{word:'dark',type:'colour'}]},
+];
+DND_PUZZLES_ACTIVE = [...DND_PUZZLES]; // init after DND_PUZZLES declared
+let dndCurrent=0;
+let dndDragEl=null;
+
+function buildDnd(){
+  const puzzle=(DND_PUZZLES_ACTIVE&&DND_PUZZLES_ACTIVE.length?DND_PUZZLES_ACTIVE:DND_PUZZLES)[dndCurrent];
+  const container=document.getElementById('dndContainer');
+  const shuffled=[...puzzle.adjectives].sort(()=>Math.random()-.5);
+
+  const typeKey = shuffled.map(a=>`<span style="display:inline-flex;align-items:center;gap:.25rem"><span style="width:10px;height:10px;border-radius:50%;background:${TYPE_META[a.type].color};display:inline-block"></span><span style="color:${TYPE_META[a.type].color};font-weight:600;font-size:.82rem">${TYPE_META[a.type].label}</span></span>`).join(' &nbsp; ');
+  container.innerHTML=`
+    <div style="background:linear-gradient(135deg,#e8f4f8,#f0f7fe);border-radius:10px;padding:1rem 1.25rem;margin-bottom:1rem;border-left:4px solid var(--teal)">
+      <p style="font-size:.9rem;color:var(--navy);font-weight:700;margin-bottom:.2rem">
+        Puzzle ${dndCurrent+1} / ${(DND_PUZZLES_ACTIVE&&DND_PUZZLES_ACTIVE.length?DND_PUZZLES_ACTIVE:DND_PUZZLES).length} &nbsp;·&nbsp; Place adjectives before: <span style="color:var(--teal)">${puzzle.noun}</span>
+      </p>
+      <p style="font-size:.8rem;color:var(--muted)">Colour key: ${typeKey}</p>
+    </div>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:.4rem">🔵 <strong>Pool</strong> — drag from here:</p>
+    <div class="dnd-pool" id="dndPool">
+      ${shuffled.map(a=>`
+        <div class="dnd-tile" draggable="true" data-word="${a.word}" data-type="${a.type}" style="background:${TYPE_META[a.type].color}">
+          <span style="display:block">${a.word}</span>
+          <span style="font-size:.65rem;opacity:.8">${TYPE_META[a.type].label}</span>
+        </div>`).join('')}
+    </div>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:.4rem;margin-top:.75rem">📥 <strong>Your order</strong> — drop here (noun is fixed at end):</p>
+    <div class="dnd-target" id="dndTarget">
+      <div class="noun-anchor">${puzzle.noun}</div>
+    </div>
+  `;
+  setupDndEvents();
+}
+
+function setupDndEvents(){
+  const pool=document.getElementById('dndPool');
+  const target=document.getElementById('dndTarget');
+
+  [pool,target].forEach(zone=>{
+    zone.addEventListener('dragover',e=>{e.preventDefault();zone.style.borderStyle='solid'});
+    zone.addEventListener('dragleave',()=>zone.style.borderStyle='dashed');
+    zone.addEventListener('drop',e=>{
+      e.preventDefault();
+      zone.style.borderStyle='dashed';
+      if(!dndDragEl)return;
+      if(zone===target){
+        // Insert before noun-anchor
+        const anchor=zone.querySelector('.noun-anchor');
+        zone.insertBefore(dndDragEl,anchor);
+      } else {
+        zone.appendChild(dndDragEl);
+      }
+      dndDragEl=null;
+    });
+  });
+
+  document.querySelectorAll('.dnd-tile').forEach(tile=>{
+    tile.addEventListener('dragstart',()=>{dndDragEl=tile;tile.classList.add('dragging')});
+    tile.addEventListener('dragend',()=>tile.classList.remove('dragging'));
+    // Touch support
+    tile.addEventListener('touchstart',e=>dndTouchStart(e,tile),{passive:true});
+    tile.addEventListener('touchmove',dndTouchMove,{passive:false});
+    tile.addEventListener('touchend',e=>dndTouchEnd(e,tile));
+  });
+}
+
+// Touch drag helpers
+let touchTile=null, touchClone=null, touchOffX=0, touchOffY=0;
+function dndTouchStart(e,tile){
+  touchTile=tile;
+  const t=e.touches[0];
+  const rect=tile.getBoundingClientRect();
+  touchOffX=t.clientX-rect.left; touchOffY=t.clientY-rect.top;
+  touchClone=tile.cloneNode(true);
+  touchClone.style.cssText=`position:fixed;pointer-events:none;opacity:.8;z-index:1000;width:${rect.width}px`;
+  document.body.appendChild(touchClone);
+}
+function dndTouchMove(e){
+  e.preventDefault();
+  if(!touchClone)return;
+  const t=e.touches[0];
+  touchClone.style.left=(t.clientX-touchOffX)+'px';
+  touchClone.style.top=(t.clientY-touchOffY)+'px';
+}
+function dndTouchEnd(e){
+  if(!touchTile||!touchClone)return;
+  touchClone.remove(); touchClone=null;
+  const t=e.changedTouches[0];
+  const el=document.elementFromPoint(t.clientX,t.clientY);
+  const target=document.getElementById('dndTarget');
+  const pool=document.getElementById('dndPool');
+  if(target&&(target===el||target.contains(el))){
+    const anchor=target.querySelector('.noun-anchor');
+    target.insertBefore(touchTile,anchor);
+  } else if(pool&&(pool===el||pool.contains(el))){
+    pool.appendChild(touchTile);
+  }
+  touchTile=null;
+}
+
+function dndCheckAll(){
+  const puzzle=(DND_PUZZLES_ACTIVE&&DND_PUZZLES_ACTIVE.length?DND_PUZZLES_ACTIVE:DND_PUZZLES)[dndCurrent];
+  const target=document.getElementById('dndTarget');
+  const tiles=target.querySelectorAll('.dnd-tile');
+  const correct=puzzle.adjectives.sort((a,b)=>TYPE_META[a.type].num-TYPE_META[b.type].num);
+  let allOk=true;
+  tiles.forEach((tile,i)=>{
+    tile.classList.remove('correct-pos','wrong-pos');
+    if(i<correct.length && tile.dataset.word===correct[i].word){
+      tile.classList.add('correct-pos');
+    } else {
+      tile.classList.add('wrong-pos'); allOk=false;
+    }
+  });
+  if(tiles.length!==correct.length) allOk=false;
+  const fb=document.getElementById('dndFeedback');
+  if(allOk){
+    showFeedback('dndFeedback','correct','🎉 Perfect! The correct order is: '+correct.map(a=>a.word).join(' → ')+' '+puzzle.noun);
+    sectionProgress.act3=true; updateProgress();
+  } else {
+    const ans=correct.map(a=>`<span style="color:${TYPE_META[a.type].color};font-weight:700">${a.word}</span>`).join(' → ');
+    showFeedback('dndFeedback','wrong','Not quite! Correct order: '+ans+' '+puzzle.noun+'. Try again!');
+  }
+}
+
+function dndReset(){ buildDnd(); document.getElementById('dndFeedback').classList.remove('show');}
+function dndNext(){ dndCurrent=(dndCurrent+1)%(DND_PUZZLES_ACTIVE&&DND_PUZZLES_ACTIVE.length?DND_PUZZLES_ACTIVE:DND_PUZZLES).length; buildDnd(); document.getElementById('dndFeedback').classList.remove('show');}
+
+/*    ACTIVITY 4 – PICTURE SENTENCES
+*/
+const PICTURES = [
+  {emoji:'🏰',name:'A Castle',noun:'castle',
+   adjAdjs:{opinion:['magnificent','imposing','eerie'],size:['enormous','towering','vast'],age:['ancient','medieval','old'],shape:['circular','tall'],colour:['grey','dark','mossy'],origin:['Scottish','English','Norman'],material:['stone','granite'],purpose:[]}},
+  {emoji:'🐈',name:'A Cat',noun:'cat',
+   adjAdjs:{opinion:['cute','gorgeous','fluffy'],size:['tiny','small','little'],age:['young','old','elderly'],shape:['round','slender'],colour:['orange','black','striped'],origin:['Persian','Siamese','local'],material:[],purpose:[]}},
+  {emoji:'🏺',name:'A Vase',noun:'vase',
+   adjAdjs:{opinion:['beautiful','elegant','delicate'],size:['tall','small','huge'],age:['ancient','antique','modern'],shape:['oval','cylindrical','round'],colour:['blue','golden','white'],origin:['Chinese','Greek','Italian'],material:['ceramic','porcelain','glass'],purpose:[]}},
+];
+// Default adj bank used when pair pictures don't define their own
+const DEFAULT_ADJS = {
+  opinion:['beautiful','magnificent','lovely','wonderful','gorgeous','awful','dreadful','impressive','cheerful','peaceful'],
+  size:['enormous','tiny','large','small','huge','vast','little','tall','wide','narrow'],
+  age:['ancient','old','modern','young','new','elderly','medieval','brand-new','vintage'],
+  shape:['round','oval','rectangular','square','triangular','flat','circular','curved'],
+  colour:['red','blue','green','golden','grey','black','white','silver','dark','scarlet','purple'],
+  origin:['African','Chinese','French','Italian','Egyptian','Scottish','Japanese','local','Indian','Greek'],
+  material:['wooden','stone','silk','leather','glass','metal','cotton','plastic','ceramic','iron'],
+  purpose:['cooking','sleeping','hunting','writing','training','racing','fishing','swimming'],
+};
+const picState = PICTURES.map(()=>({chosen:[],noun:''}));
+
+function buildPictures(){
+  const container=document.getElementById('pictureCards');
+  const _PICS=(PICTURES_ACTIVE&&PICTURES_ACTIVE.length)?PICTURES_ACTIVE:PICTURES;
+  container.innerHTML=_PICS.map((pic,pi)=>{
+    const adjAdjs=pic.adjAdjs||DEFAULT_ADJS;
+    return `
+    <div class="picture-card" style="margin-bottom:1.25rem">
+      <div class="picture-display" id="picDisplay${pi}">${pic.emoji}</div>
+      <div class="picture-info">
+        <h4>${pic.name}</h4>
+        <p style="font-size:.85rem;color:var(--muted);margin-bottom:.5rem">Choose adjectives from the bank below, then click "Build Sentence".</p>
+        <div id="picHint${pi}" style="background:#e8f4f8;border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:.35rem .75rem;font-size:.82rem;color:var(--teal);font-weight:600;margin-bottom:.5rem">${pic.hint||''}</div>
+        <div class="adj-type-picker" id="picTypePicker${pi}">
+          ${TYPE_ORDER.filter(t=>adjAdjs[t]&&adjAdjs[t].length>0).map(t=>`
+            <button class="type-pick-btn" style="background:${TYPE_META[t].color}" onclick="picShowBank(${pi},'${t}')">${TYPE_META[t].label}</button>
+          `).join('')}
+        </div>
+        <div class="adj-bank" id="picBank${pi}" style="display:none"></div>
+        <div style="font-size:.82rem;color:var(--muted);margin-bottom:.4rem">Your sentence:</div>
+        <div class="sentence-output" id="picOutput${pi}">
+          <span style="color:var(--muted);font-size:.85rem">Select adjectives above, then build…</span>
+        </div>
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem">
+          <button class="btn btn-primary btn-sm" onclick="picBuild(${pi})">Build Sentence</button>
+          <button class="btn btn-outline btn-sm" onclick="picClear(${pi})">Clear</button>
+          <button class="btn btn-navy btn-sm" onclick="picCheck(${pi})">✓ Check Order</button>
+        </div>
+        <div class="feedback" id="picFeedback${pi}"></div>
+      </div>
+    </div>
+  `}).join('');
+}
+
+const picChosen={};
+function picShowBank(pi,type){
+  const pic=(PICTURES_ACTIVE&&PICTURES_ACTIVE.length?PICTURES_ACTIVE:PICTURES)[pi];
+  const adjAdjs=pic.adjAdjs||DEFAULT_ADJS;
+  const bank=document.getElementById('picBank'+pi);
+  bank.style.display='flex';
+  bank.innerHTML=adjAdjs[type].map(w=>`
+    <span class="adj-bank-word" style="background:${TYPE_META[type].color}" onclick="picToggleAdj(${pi},'${w}','${type}')" id="picword_${pi}_${w}">${w}</span>
+  `).join('');
+}
+
+if(!window.picChosenMap) window.picChosenMap={};
+function picToggleAdj(pi,word,type){
+  const key=`${pi}_${word}`;
+  if(!window.picChosenMap[pi]) window.picChosenMap[pi]=[];
+  const arr=window.picChosenMap[pi];
+  const idx=arr.findIndex(a=>a.word===word);
+  const el=document.getElementById('picword_'+pi+'_'+word);
+  if(idx>=0){arr.splice(idx,1);if(el){el.style.opacity='1';el.style.textDecoration='none'}}
+  else{arr.push({word,type});if(el){el.style.opacity='.5';el.style.textDecoration='line-through'}}
+}
+
+function picBuild(pi){
+  const pic=(PICTURES_ACTIVE&&PICTURES_ACTIVE.length?PICTURES_ACTIVE:PICTURES)[pi];
+  const arr=window.picChosenMap[pi]||[];
+  const out=document.getElementById('picOutput'+pi);
+  if(arr.length===0){out.innerHTML='<span style="color:var(--muted);font-size:.85rem">Select some adjectives first…</span>';return;}
+  out.innerHTML='<span class="sentence-word">a</span>'+
+    arr.map(a=>`<span class="sentence-word" style="background:${TYPE_META[a.type].color}">${a.word}</span>`).join('')+
+    `<span class="sentence-word noun">${pic.noun}</span>`;
+}
+
+function picClear(pi){
+  window.picChosenMap[pi]=[];
+  const out=document.getElementById('picOutput'+pi);
+  out.innerHTML='<span style="color:var(--muted);font-size:.85rem">Select adjectives above, then build…</span>';
+  document.getElementById('picFeedback'+pi).classList.remove('show');
+  const bank=document.getElementById('picBank'+pi);
+  bank.querySelectorAll('.adj-bank-word').forEach(e=>{e.style.opacity='1';e.style.textDecoration='none'});
+}
+
+function picCheck(pi){
+  const arr=window.picChosenMap[pi]||[];
+  if(arr.length<2){showFeedback('picFeedback'+pi,'info','Add at least 2 adjectives to check the order.');return;}
+  const nums=arr.map(a=>TYPE_META[a.type].num);
+  let correct=true;
+  for(let i=1;i<nums.length;i++) if(nums[i]<nums[i-1]) correct=false;
+  if(correct){
+    showFeedback('picFeedback'+pi,'correct','✓ Correct order! '+arr.map(a=>`${TYPE_META[a.type].label}(${a.word})`).join(' → '));
+    sectionProgress.act4=true; updateProgress();
+  } else {
+    const sorted=[...arr].sort((a,b)=>TYPE_META[a.type].num-TYPE_META[b.type].num);
+    showFeedback('picFeedback'+pi,'wrong','✗ Order is wrong. Try: '+sorted.map(a=>a.word).join(' → '));
+  }
+}
+
+/*    ACTIVITY 5 – CROSSWORD
+*/
+/* 10×10 grid */
+const CW_ANSWERS = {
+  GORGEOUS: {dir:'across',row:0,col:0,  num:1},
+  ANCIENT:  {dir:'across',row:2,col:0,  num:3},
+  ROUND:    {dir:'across',row:4,col:0,  num:5},
+  WOODEN:   {dir:'across',row:6,col:0,  num:7},
+  SCARLET:  {dir:'across',row:8,col:0,  num:9},
+  GIGANTIC: {dir:'down',  row:0,col:9,  num:2},
+  ITALIAN:  {dir:'down',  row:0,col:10, num:4},
+  LEATHER:  {dir:'down',  row:0,col:8,  num:6},
+  TINY:     {dir:'down',  row:1,col:7,  num:8},
+  COOKING:  {dir:'down',  row:4,col:11, num:10},
+};
+
+const CW_CLUES = {
+  across:{
+    1:{clue:'Opinion: strikingly beautiful or attractive (8)',   answer:'GORGEOUS'},
+    3:{clue:'Age: from the very distant past (7)',               answer:'ANCIENT'},
+    5:{clue:'Shape: perfectly circular in form (5)',             answer:'ROUND'},
+    7:{clue:'Material: made from trees (6)',                     answer:'WOODEN'},
+    9:{clue:'Colour: vivid, bright red (7)',                     answer:'SCARLET'},
+  },
+  down:{
+    2:{clue:'Size: extremely large; colossal (8)',               answer:'GIGANTIC'},
+    4:{clue:'Origin: coming from Italy (7)',                     answer:'ITALIAN'},
+    6:{clue:'Material: made from treated animal skin (7)',       answer:'LEATHER'},
+    8:{clue:'Size: very small -- opposite of huge (4)',          answer:'TINY'},
+    10:{clue:'Purpose: a ___ pot -- used to prepare meals (7)', answer:'COOKING'},
+  }
+};
+
+const GRID_SIZE=12;
+let cwGrid=Array.from({length:GRID_SIZE},()=>Array(GRID_SIZE).fill(null));
+
+function buildCrossword(){
+  const _CWA = (CW_ACTIVE&&CW_ACTIVE.answers)?CW_ACTIVE.answers:CW_ANSWERS;
+  const _CWC = (CW_ACTIVE&&CW_ACTIVE.clues)?CW_ACTIVE.clues:CW_CLUES;
+  // Place answers
+  Object.entries(_CWA).forEach(([word,info])=>{
+    for(let i=0;i<word.length;i++){
+      const r=info.dir==='across'?info.row:info.row+i;
+      const c=info.dir==='across'?info.col+i:info.col;
+      if(!cwGrid[r][c]) cwGrid[r][c]={letter:word[i],num:null};
+      else cwGrid[r][c].letter=word[i];
+    }
+    cwGrid[info.row][info.col].num=info.num;
+  });
+
+  // Render grid
+  const el=document.getElementById('cwGrid');
+  el.style.gridTemplateColumns=`repeat(${GRID_SIZE},38px)`;
+  el.innerHTML='';
+  for(let r=0;r<GRID_SIZE;r++){
+    for(let c=0;c<GRID_SIZE;c++){
+      const cell=document.createElement('div');
+      cell.className='cw-cell';
+      if(cwGrid[r][c]){
+        if(cwGrid[r][c].num){
+          const num=document.createElement('span');
+          num.className='cw-num';num.textContent=cwGrid[r][c].num;
+          cell.appendChild(num);
+        }
+        const inp=document.createElement('input');
+        inp.maxLength=1;inp.dataset.r=r;inp.dataset.c=c;inp.dataset.ans=cwGrid[r][c].letter;
+        inp.addEventListener('input',e=>{e.target.value=e.target.value.toUpperCase();cwAutoFocus(e,r,c)});
+        inp.addEventListener('focus',()=>cwHighlight(r,c));
+        cell.appendChild(inp);
+      } else {
+        cell.classList.add('black');
+      }
+      el.appendChild(cell);
+    }
+  }
+
+  // Build clues
+  const ac=document.getElementById('cwAcrossClues');
+  const dn=document.getElementById('cwDownClues');
+  ac.innerHTML=Object.entries(_CWC.across).map(([n,cl])=>`
+    <div class="cw-clue" id="clue_a_${n}" onclick="cwFocusClue('across',${n})">
+      <span class="clue-num">${n}</span><span class="clue-dir">A</span>${cl.clue}
+    </div>`).join('');
+  dn.innerHTML=Object.entries(_CWC.down).map(([n,cl])=>`
+    <div class="cw-clue" id="clue_d_${n}" onclick="cwFocusClue('down',${n})">
+      <span class="clue-num">${n}</span><span class="clue-dir">D</span>${cl.clue}
+    </div>`).join('');
+}
+
+function cwAutoFocus(e,r,c){
+  if(e.target.value.length===1){
+    const next=document.querySelector(`[data-r="${r}"][data-c="${c+1}"]`)||document.querySelector(`[data-r="${r+1}"][data-c="${c}"]`);
+    if(next) next.focus();
+  }
+}
+function cwHighlight(r,c){
+  document.querySelectorAll('#cwGrid input').forEach(i=>i.style.background='');
+}
+function cwFocusClue(dir,num){
+  const _answers=(CW_ACTIVE&&CW_ACTIVE.answers)?CW_ACTIVE.answers:CW_ANSWERS;
+  const info=Object.values(_answers).find(a=>a.num==num&&a.dir===dir);
+  if(!info)return;
+  const inp=document.querySelector(`[data-r="${info.row}"][data-c="${info.col}"]`);
+  if(inp) inp.focus();
+  document.querySelectorAll('.cw-clue').forEach(c=>c.classList.remove('active'));
+  document.getElementById(`clue_${dir[0]}_${num}`)?.classList.add('active');
+}
+
+function cwCheck(){
+  let correct=0,total=0;
+  document.querySelectorAll('#cwGrid input').forEach(inp=>{
+    total++;
+    inp.classList.remove('correct','wrong');
+    if(inp.value.toUpperCase()===inp.dataset.ans){inp.classList.add('correct');correct++}
+    else if(inp.value) inp.classList.add('wrong');
+  });
+  const pct=Math.round(correct/total*100);
+  if(pct===100){
+    showFeedback('cwFeedback','correct','🎉 Perfect score! All words correct!');
+    sectionProgress.act5=true; updateProgress();
+  } else {
+    showFeedback('cwFeedback','wrong',`${correct}/${total} letters correct (${pct}%). Wrong letters shown in red.`);
+  }
+}
+function cwReveal(){
+  document.querySelectorAll('#cwGrid input').forEach(inp=>{inp.value=inp.dataset.ans;inp.classList.add('correct')});
+  showFeedback('cwFeedback','info','Answers revealed! Study them, then reset to try again.');
+}
+function cwReset(){
+  document.querySelectorAll('#cwGrid input').forEach(inp=>{inp.value='';inp.classList.remove('correct','wrong')});
+  document.getElementById('cwFeedback').classList.remove('show');
+}
+
+/*    ACTIVITY 6 – CHAIN STORY
+*/
+let storyLines=[];
+
+function storyAdd(){
+  const inp=document.getElementById('storyInput');
+  const text=inp.value.trim();
+  if(!text){showFeedback('storyFeedback','info','Please type a noun phrase first.');return;}
+  const analysis=analyseAdjOrder(text);
+  renderOrderChecker(analysis,text);
+  if(analysis.isCorrect||analysis.adjs.length===0){
+    storyLines.push(text);
+    renderStory();
+    inp.value='';
+    document.getElementById('storyFeedback').classList.remove('show');
+    if(storyLines.length>=3){sectionProgress.act6=true;updateProgress();}
+  } else {
+    showFeedback('storyFeedback','wrong','The adjective order is wrong! Fix it and try again. See the analysis above.');
+  }
+}
+
+function analyseAdjOrder(text){
+  // Simple analysis: find adjectives by matching against known words
+  const allAdjs=[];
+  TYPE_ORDER.forEach(type=>{
+    const words=TYPE_META[type].examples.split(', ');
+    words.forEach(w=>allAdjs.push({word:w,type}));
+  });
+  // Also add DND puzzle words
+  DND_PUZZLES.forEach(p=>p.adjectives.forEach(a=>allAdjs.push({word:a.word,type:a.type})));
+  // Add passage adjectives
+  PASSAGE.adjectives.forEach(a=>allAdjs.push({word:a.word,type:a.type}));
+
+  const tokens=text.toLowerCase().split(/\s+/);
+  const found=[];
+  tokens.forEach(tok=>{
+    const t=tok.replace(/[^a-z]/g,'');
+    const match=allAdjs.find(a=>a.word===t);
+    if(match) found.push({word:t,type:match.type,num:TYPE_META[match.type].num});
+  });
+
+  // Check order
+  let isCorrect=true;
+  for(let i=1;i<found.length;i++) if(found[i].num<found[i-1].num) isCorrect=false;
+
+  return {adjs:found, isCorrect};
+}
+
+function renderOrderChecker(analysis,text){
+  const oc=document.getElementById('orderChecker');
+  const row=document.getElementById('orderResultRow');
+  const verdict=document.getElementById('orderVerdict');
+  oc.style.display='block';
+  if(analysis.adjs.length===0){
+    row.innerHTML='<span style="color:var(--muted);font-size:.85rem">No known adjectives detected. Make sure you use adjectives from the reference guide.</span>';
+    verdict.innerHTML='';
+    return;
+  }
+  row.innerHTML=analysis.adjs.map((a,i)=>{
+    const ok=i===0||(a.num>=(analysis.adjs[i-1]?.num||0));
+    return `<span class="chip" style="background:${TYPE_META[a.type].color};color:#fff;border-color:${TYPE_META[a.type].color}">${a.word}<br><small style="font-size:.68rem;opacity:.85">${TYPE_META[a.type].label}</small></span>${i<analysis.adjs.length-1?`<span style="color:var(--muted)">${ok?'→':'✗'}</span>`:''}`;
+  }).join('');
+  verdict.innerHTML=analysis.isCorrect?
+    '<span style="color:var(--success);font-weight:700">✓ Correct order! Great job.</span>':
+    '<span style="color:var(--error);font-weight:700">✗ Order incorrect. Check the Royal Order chart.</span>';
+}
+
+function renderStory(){
+  const disp=document.getElementById('storyDisplay');
+  if(storyLines.length===0){
+    disp.innerHTML='<em style="color:rgba(255,255,255,.55)">'+STORY_STARTER_ACTIVE+'</em>';
+    return;
+  }
+  disp.innerHTML='<span style="color:rgba(255,255,255,.5)">'+STORY_STARTER_ACTIVE+'</span> '+
+    storyLines.map(l=>{
+      const ana=analyseAdjOrder(l);
+      let hl=l;
+      ana.adjs.forEach(a=>{
+        hl=hl.replace(new RegExp('\\b'+a.word+'\\b','i'),`<span class="adj-highlight">${a.word}</span>`);
+      });
+      return hl;
+    }).join(' ');
+}
+
+function storyUndo(){if(storyLines.length>0){storyLines.pop();renderStory()}}
+function storyClear(){storyLines=[];renderStory();document.getElementById('orderChecker').style.display='none';document.getElementById('storyFeedback').classList.remove('show')}
+function storyCopy(){
+  const txt=STORY_STARTER_ACTIVE+' '+storyLines.join(' ');
+  navigator.clipboard?.writeText(txt).then(()=>showFeedback('storyFeedback','info','Story copied to clipboard!'));
+}
+
+/*    ACTIVITY 7 – QUIZ
+*/
+const QUIZ_QUESTIONS = [
+  {q:'Which type of adjective comes FIRST in the royal order?',opts:['Size','Age','Opinion','Colour'],ans:2},
+  {q:'What is the correct order for: "a ___ ___ coat" with adjectives "red" (colour) and "old" (age)?',opts:['a red old coat','a old red coat','an old red coat','a red coat old'],ans:2},
+  {q:'Which sentence has the CORRECT adjective order?',opts:['a silk beautiful scarf','a beautiful silk scarf','a beautiful scarf silk','silk a beautiful scarf'],ans:1},
+  {q:'"Italian" is an example of which type of adjective?',opts:['Opinion','Material','Origin','Purpose'],ans:2},
+  {q:'Where does a PURPOSE adjective appear in the order?',opts:['1st','4th','6th','8th (last)'],ans:3},
+  {q:'Which adjective is MATERIAL type?',opts:['enormous','ancient','wooden','gorgeous'],ans:2},
+  {q:'Correct the order: "a wooden lovely large table"',opts:['a large lovely wooden table','a lovely large wooden table','a wooden large lovely table','a lovely wooden large table'],ans:1},
+  {q:'Which question does an AGE adjective answer?',opts:['What colour?','How big?','How old?','What shape?'],ans:2},
+  {q:'"Oval" and "rectangular" are examples of which type?',opts:['Size','Shape','Origin','Material'],ans:1},
+  {q:'A "cooking pot" — what type is the adjective "cooking"?',opts:['Opinion','Origin','Purpose','Material'],ans:2},
+];
+let quizIdx=0, quizScore=0, quizAnswered=Array(QUIZ_QUESTIONS.length).fill(null);
+
+function buildQuiz(){
+  const prog=document.getElementById('quizProgress');
+  const _QQ=QUIZ_SET_ACTIVE.map(idx=>QUIZ_QUESTIONS[idx]);
+  prog.innerHTML=_QQ.map((_,i)=>`<div class="q-dot${i===0?' active':''}" id="qdot${i}">${i+1}</div>`).join('');
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const container=document.getElementById('quizContainer');
+  const _QQ = QUIZ_SET_ACTIVE.map(i=>QUIZ_QUESTIONS[i]);
+  const _total = _QQ.length;
+  if(quizIdx>=_total){
+    const pct=Math.round(quizScore/QUIZ_SET_ACTIVE.length*100);
+    container.innerHTML=`
+      <div class="score-display">
+        <div class="big-num">${quizScore}/${QUIZ_SET_ACTIVE.length}</div>
+        <div style="font-size:1.1rem;margin:.5rem 0">${pct>=80?'🎉 Excellent!':pct>=60?'👍 Good effort!':'📚 Keep practising!'}</div>
+        <div style="opacity:.85;font-size:.9rem">Score: ${pct}%</div>
+      </div>`;
+    document.getElementById('quizNextBtn').style.display='none';
+    document.getElementById('quizRestartBtn').style.display='inline-flex';
+    if(pct>=60){sectionProgress.act7=true;updateProgress();}
+    return;
+  }
+
+  const _QQ2=QUIZ_SET_ACTIVE.map(i=>QUIZ_QUESTIONS[i]);
+  const q=_QQ2[quizIdx];
+  const already=quizAnswered[quizIdx];
+  container.innerHTML=`
+    <div class="quiz-q">
+      <div class="q-text">Q${quizIdx+1}. ${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((opt,i)=>`
+          <button class="quiz-opt ${already!==null?(i===q.ans?'correct':(i===already?'wrong':'')):''}"
+            id="qopt${i}" onclick="quizAnswer(${i})"
+            ${already!==null?'disabled':''}
+          >${String.fromCharCode(65+i)}. ${opt}</button>`).join('')}
+      </div>
+      ${already!==null?`<div class="feedback show ${already===q.ans?'correct':'wrong'}" style="margin-top:.75rem">
+        ${already===q.ans?'✓ Correct!':'✗ The correct answer is: '+q.opts[q.ans]}
+      </div>`:''}
+    </div>`;
+  document.getElementById('quizNextBtn').style.display=already!==null?'inline-flex':'none';
+}
+
+function quizAnswer(i){
+  if(quizAnswered[quizIdx]!==null)return;
+  const _QQ=QUIZ_SET_ACTIVE.map(idx=>QUIZ_QUESTIONS[idx]);
+  const q=_QQ[quizIdx];
+  quizAnswered[quizIdx]=i;
+  const dot=document.getElementById('qdot'+quizIdx);
+  if(i===q.ans){quizScore++;dot.className='q-dot done-correct';}
+  else dot.className='q-dot done-wrong';
+  renderQuestion();
+  document.getElementById('quizNextBtn').style.display='inline-flex';
+}
+
+function quizNext(){
+  quizIdx++;
+  const dot=document.getElementById('qdot'+(quizIdx-1));
+  if(dot) dot.className=dot.className.replace('active','').trim();
+  const _total=QUIZ_SET_ACTIVE.length;
+  if(quizIdx<_total){
+    const nextDot=document.getElementById('qdot'+quizIdx);
+    if(nextDot)nextDot.className='q-dot active';
+  }
+  renderQuestion();
+  document.getElementById('quizNextBtn').style.display='none';
+}
+
+function quizRestart(){
+  quizIdx=0;quizScore=0;quizAnswered=Array(QUIZ_SET_ACTIVE.length).fill(null);
+  buildQuiz();
+  document.getElementById('quizRestartBtn').style.display='none';
+  document.getElementById('quizNextBtn').style.display='none';
+}
+
+
+/*    ACTIVITY 8 – SENTENCE SCRAMBLE
+*/
+/* SCRAMBLE_SENTENCES, WORD_TYPES, WORD_COLORS — moved to top */
+
+/* scramble state vars — moved to top */
+
+function buildScramble(){
+  const s=(SCRAMBLE_ACTIVE&&SCRAMBLE_ACTIVE.length?SCRAMBLE_ACTIVE:SCRAMBLE_SENTENCES)[scrambleCurrent];
+  scrambleAnswer=[];
+  scramblePool=[...s.words].sort(()=>Math.random()-.5);
+  renderScramble();
+}
+
+function renderScramble(){
+  const s=(SCRAMBLE_ACTIVE&&SCRAMBLE_ACTIVE.length?SCRAMBLE_ACTIVE:SCRAMBLE_SENTENCES)[scrambleCurrent];
+  const container=document.getElementById('scrambleContainer');
+  container.innerHTML=`
+    <p style="font-size:.9rem;color:var(--muted);margin-bottom:.5rem">Sentence ${scrambleCurrent+1} of ${(SCRAMBLE_ACTIVE&&SCRAMBLE_ACTIVE.length?SCRAMBLE_ACTIVE:SCRAMBLE_SENTENCES).length} — tap words in the correct order:</p>
+    <div style="background:var(--navy);border-radius:10px;padding:1rem;margin-bottom:.85rem;min-height:56px;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center" id="scrambleAnswerArea">
+      ${scrambleAnswer.length===0?'<span style="color:rgba(255,255,255,.35);font-size:.85rem">Your sentence will appear here…</span>':''}
+      ${scrambleAnswer.map((w,i)=>`<span class="scr-word in-answer" data-idx="${i}" style="background:${WORD_COLORS[WORD_TYPES[w.toLowerCase()]||'noun']};color:#fff;padding:.35rem .75rem;border-radius:20px;font-size:.9rem;font-weight:600;cursor:pointer" onclick="scrambleMoveBack(${i})">${w}</span>`).join('')}
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;min-height:52px;background:#f0f4f8;border-radius:10px;padding:.75rem;border:2px dashed var(--border)" id="scramblePoolArea">
+      ${scramblePool.map((w,i)=>`<span class="scr-word in-pool" data-idx="${i}" style="background:${WORD_COLORS[WORD_TYPES[w.toLowerCase()]||'noun']};color:#fff;padding:.35rem .75rem;border-radius:20px;font-size:.9rem;font-weight:600;cursor:pointer;opacity:.9" onclick="scramblePick(${i})">${w}</span>`).join('')}
+    </div>
+    <div class="flex mt2" style="font-size:.82rem;color:var(--muted);gap:.5rem;flex-wrap:wrap">
+      ${Object.entries(WORD_COLORS).filter(([t])=>t!=='article').map(([type,col])=>`<span><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:${col};margin-right:3px"></span>${type.charAt(0).toUpperCase()+type.slice(1)}`).join('</span>')}
+    </div>
+  `;
+}
+
+function scramblePick(i){
+  const word=scramblePool.splice(i,1)[0];
+  scrambleAnswer.push(word);
+  renderScramble();
+}
+
+function scrambleMoveBack(i){
+  const word=scrambleAnswer.splice(i,1)[0];
+  scramblePool.push(word);
+  renderScramble();
+}
+
+function scrambleCheck(){
+  const s=(SCRAMBLE_ACTIVE&&SCRAMBLE_ACTIVE.length?SCRAMBLE_ACTIVE:SCRAMBLE_SENTENCES)[scrambleCurrent];
+  if(scrambleAnswer.length!==s.correct.length){
+    showFeedback('scrambleFeedback','info',`Place all ${s.correct.length} words in the answer area first.`);
+    return;
+  }
+  const ok=scrambleAnswer.every((w,i)=>w.toLowerCase()===s.correct[i].toLowerCase());
+  if(ok){
+    showFeedback('scrambleFeedback','correct','🎉 Perfect! That is the correct adjective order.');
+    sectionProgress.act8=true; updateProgress();
+  } else {
+    const ans=s.correct.map(w=>`<strong style="color:${WORD_COLORS[WORD_TYPES[w.toLowerCase()]||'noun']}">${w}</strong>`).join(' ');
+    showFeedback('scrambleFeedback','wrong','Not quite! Correct order: '+ans);
+  }
+}
+
+function scrambleReset(){ buildScramble(); document.getElementById('scrambleFeedback').classList.remove('show');}
+function scrambleNext(){ scrambleCurrent=(scrambleCurrent+1)%(SCRAMBLE_ACTIVE&&SCRAMBLE_ACTIVE.length?SCRAMBLE_ACTIVE:SCRAMBLE_SENTENCES).length; buildScramble(); document.getElementById('scrambleFeedback').classList.remove('show');}
+
+/*    UTILITIES
+*/
+function showFeedback(id,type,msg){
+  const el=document.getElementById(id);
+  el.className='feedback show '+type;
+  el.innerHTML=msg;
+}
+
+/*    INIT
+*/
+function init(){
+  buildRefTable();
+  buildAudioSection();
+  buildDnd();
+  buildPictures();
+  buildCrossword();
+  renderHomeMap();
+  buildScramble();
+  // Mark reference as visited when first viewed
+  document.querySelector('[onclick*="reference"]').addEventListener('click',()=>{sectionProgress.reference=true;updateProgress()},{once:true});
+  // Init mind map
+  setTimeout(mmRender,100);
+  // Quiz dots
+  const firstDot=document.getElementById('qdot0');
+  if(firstDot)firstDot.className='q-dot active';
+  buildQuiz();
+  // Responsive mindmap redraw
+  const resObs=new ResizeObserver(()=>mmRender());
+  const mmEl=document.getElementById('mmCanvas');
+  if(mmEl)resObs.observe(mmEl);
+  // One-time welcome toast
+  setTimeout(()=>showToast("👋 Welcome to Kopiya Junior School! Select your pair number to begin."),900);
+}
+
+window.addEventListener('load',init);
+
+function shareLesson(){
+  if(navigator.share){
+    navigator.share({title:'Order of Adjectives – Grade 9',text:'Interactive adjectives lesson pack',url:window.location.href});
+  } else {
+    navigator.clipboard?.writeText(window.location.href);
+    alert('Link copied to clipboard!');
+  }
+}
+
+// PWA Service Worker (inline)
+if('serviceWorker' in navigator){
+  const swCode = `
+self.addEventListener('install',e=>e.waitUntil(
+  caches.open('adj-v1').then(c=>c.addAll(['/']))
+));
+self.addEventListener('fetch',e=>e.respondWith(
+  caches.match(e.request).then(r=>r||fetch(e.request))
+));
+  `;
+  const blob=new Blob([swCode],{type:'application/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(()=>{});
+}
+</script>
+
+<!-- Print bar -->
+<div style="position:fixed;bottom:0;left:0;right:0;background:rgba(27,42,74,.95);backdrop-filter:blur(8px);padding:.5rem 1.25rem;display:flex;align-items:center;justify-content:space-between;z-index:99;border-top:1px solid rgba(255,255,255,.1)">
+  <div style="display:flex;flex-direction:column">
+    <span style="color:var(--gold);font-size:.75rem;font-weight:700;letter-spacing:.06em">KOPIYA JUNIOR SCHOOL</span>
+    <span style="color:rgba(255,255,255,.55);font-size:.75rem">Grade 9 · Order of Adjectives · Pair <span id="footerPair">—</span></span>
+  </div>
+  <div style="display:flex;gap:.5rem">
+    <button onclick="window.print()" style="background:transparent;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.7);padding:.3rem .8rem;border-radius:6px;font-size:.78rem;cursor:pointer">🖨 Print</button>
+    <button onclick="shareLesson()" style="background:var(--teal);border:none;color:#fff;padding:.3rem .8rem;border-radius:6px;font-size:.78rem;cursor:pointer">🔗 Share</button>
+  </div>
+</div>
+
+<!-- Floating quick ref -->
+<div id="quickRef" style="position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:.5rem">
+  <div id="quickRefPanel" style="display:none;background:var(--navy);border-radius:12px;padding:1rem;color:#fff;max-width:320px;box-shadow:0 8px 32px rgba(0,0,0,.3);font-size:.82rem">
+    <div style="font-weight:700;color:var(--gold);margin-bottom:.6rem;font-size:.9rem">⚡ Quick Reference</div>
+    <div style="display:flex;flex-wrap:wrap;gap:.3rem">
+      <span style="background:#E74C3C;color:#fff;border-radius:6px;padding:.2rem .55rem;font-weight:600">1. Opinion</span><span style="background:#E67E22;color:#fff;border-radius:6px;padding:.2rem .55rem;font-weight:600">2. Size</span><span style="background:#D4AC0D;color:#fff;border-radius:6px;padding:.2rem .55rem;font-weight:600">3. Age</span><span style="background:#7B2D8B;color:#fff;border-radius:6px;padding:.2rem .55rem;font-weight:600">4. Shape</span><span style="background:#2980B9;color:#fff;border-radius:6px;padding:.2rem .55rem;font-weight:600">5. Colour</span><span style="background:#16A085;color:#fff;border-radius:6px;padding:.2rem .55rem;font-weight:600">6. Origin</span><span style="background:#0E8A8A;color:#fff;border-radius:6px;padding:.2rem .55rem;font-weight:600">7. Material</span><span style="background:#D35400;color:#fff;border-radius:6px;padding:.2rem .55rem;font-weight:600">8. Purpose</span>
+    </div>
+    <div style="margin-top:.6rem;color:rgba(255,255,255,.7);font-style:italic;font-size:.78rem">"Oscar Saw A Silly Cat Often Making Pasta"</div>
+  </div>
+  <button onclick="document.getElementById('quickRefPanel').style.display=document.getElementById('quickRefPanel').style.display==='none'?'block':'none'"
+    style="width:50px;height:50px;border-radius:50%;background:var(--teal);color:#fff;font-size:1.3rem;box-shadow:0 4px 16px rgba(0,0,0,.25);border:none;cursor:pointer;transition:transform .2s"
+    onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform=''"
+    title="Quick Reference">📋</button>
+</div>
+</body>
+</html>
